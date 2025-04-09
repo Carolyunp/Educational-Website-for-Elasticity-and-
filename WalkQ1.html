@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/navbar.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">    
+    <link rel="stylesheet" href="styles/theory.css">
+    <script src="https://kit.fontawesome.com/f1091eb4c6.js" crossorigin="anonymous"></script>
+    <script src="scripts/navbar.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+    <script>document.addEventListener("DOMContentLoaded", ()=> {renderMathInElement(document.body)});</script>
+    <title>Key Concepts</title>
+    <style>
+        h2 {
+            font-size: 1.8em;
+        }
+        ol {
+            font-size: 1.1em;
+        }
+        li {
+            margin-bottom: 20px;
+        }
+        p {
+            margin-top: 30px;
+            font-size: 1.2em;
+            text-align: center;
+        }
+    </style>
+</head>
+<Body>
+    <h1>Problem in Polar Coordinates</h1>
+
+    <h2>Problem Statement</h2>
+    <p>
+        A semicircular tunnel supporting vertical loads can be simplified, due to symmetry, to the beam setup of Figure 1.
+        It is subjected to a load of magnitude \( P \) on surface \( CD \).
+        For the solution of the stress, strain, and displacement fields of this beam, consider the general form of a stress function:
+    </p>
+    <p>
+        \[
+        \phi(r,\theta) = \left( S r^3 + \frac{N}{r} + O r + Q r \log r \right) \sin \theta
+        \]
+    </p>
+    <p>where \( S, N, O, Q \) are constants.</p>
+
+    <div class="container">
+            <img src="styles/images/walkthroughq1.png" alt="question" >
+		</div>
+	<div class="container">	
+	        <figcaption><strong>Figure 1: Beam of Question 1</strong></figcaption>
+        </div>
+        
+
+    <hr>
+
+    <h3>Questions</h3>
+    <ol>
+        <li>
+            Specify all boundary conditions on all four surfaces, connecting them with the appropriate stress field components.
+            <span style="float: right;">[8 marks]</span>
+        </li>
+        <li>
+            Write complete relationships for the stress field (i.e. \( \sigma_r(r, \theta) \), \( \sigma_{\theta}(r, \theta) \), \( \tau_{r\theta}(r, \theta) \)) 
+            in terms of the position \( (r, \theta) \), parameters \( S, N, O, Q \), and radii \( a, b \).
+            <span style="float: right;">[3 marks]</span>
+        </li>
+        <li>
+            Form a system of equations that can be used to express the unknown parameters \( S, N, O, Q \) in terms of the known quantities \( P, a, b \) 
+            (but do not solve this system).
+            <span style="float: right;">[4 marks]</span>
+        </li>
+    </ol>
+
+    <hr>
+
+    <h2>Solution Process</h2>
+
+    <h3>1. Boundary Conditions</h3>
+    <p>The boundary conditions on all four surfaces are as follows:</p>
+    <ul>
+        <li><strong>Surface AD:</strong> \( \sigma_r(a, \theta) = \tau_{r\theta}(a, \theta) = 0 \)</li>
+        <li><strong>Surface BC:</strong> \( \sigma_r(b, \theta) = \tau_{r\theta}(b, \theta) = 0 \)</li>
+        <li><strong>Surface CD:</strong> 
+            \[
+            \int_{a}^{b} \tau_{r\theta}(r,0) \, dr = P
+            \]
+            \[
+            F_\theta = \int_{a}^{b} \sigma_{\theta}(r,0) \, dr = 0
+            \]
+            \[
+            M = \int_{a}^{b} \sigma_{\theta}(r,0) r \, dr = 0
+            \]
+        </li>
+        <li><strong>Surface AB:</strong> Using equilibrium of forces and moments:
+            \[
+            \int_{a}^{b} \sigma_{\theta}(r, \frac{\pi}{2}) \, dr = -P
+            \]
+            \[
+            M = \int_{a}^{b} \sigma_{\theta}(r, \frac{\pi}{2}) r \, dr = P \frac{a+b}{2}
+            \]
+            \[
+            \int_{a}^{b} \tau_{r\theta}(r, \frac{\pi}{2}) \, dr = 0
+            \]
+        </li>
+    </ul>
+
+    <hr>
+
+    <h3>2. Stress Field Expressions</h3>
+    <p>The stress components derived from the stress function are:</p>
+    <p>
+        \[
+        \sigma_r = - \frac{1}{r} \frac{\partial \phi}{\partial r} + \frac{1}{r^2} \frac{\partial^2 \phi}{\partial \theta^2} =
+        \left( 2Ar - \frac{2B}{r^3} + \frac{D}{r} \right) \sin\theta
+        \]
+    </p>
+    <p>
+        \[
+        \sigma_{\theta} = \frac{\partial^2 \phi}{\partial r^2} =
+        \left( 6Ar + \frac{2B}{r^3} + D \right) \sin\theta
+        \]
+    </p>
+    <p>
+        \[
+        \tau_{r\theta} = - \frac{\partial}{\partial r} \left( \frac{1}{r} \frac{\partial \phi}{\partial \theta} \right) =
+        -\left( 2Ar - \frac{2B}{r^3} + D \right) \cos\theta
+        \]
+    </p>
+
+    <hr>
+
+    <h3>3. System of Equations for \( S, N, O, Q \)</h3>
+    <p>From the boundary conditions, we obtain the following system of equations:</p>
+    <p>
+        \[
+        2Aa - \frac{2B}{a^3} + \frac{D}{a} = 0
+        \]
+    </p>
+    <p>
+        \[
+        2Ab - \frac{2B}{b^3} + \frac{D}{b} = 0
+        \]
+    </p>
+	<p>
+        \[
+        A (b^2 - a^2) + B \left( \frac{1}{b^2} - \frac{1}{a^2} \right) + D \log \left(\frac{b}{a} \right) = -P
+        \quad 
+        \]
+    </p>
+    <p>
+        \[
+        3A (b^2 - a^2) + B \left( \frac{1}{b^2} - \frac{1}{a^2} \right) + D \log \left(\frac{b}{a} \right) = -P
+        \quad 
+        \]
+    </p>
+    <p>
+        \[
+        2A (b^3 - a^3) - 2B \left( \frac{1}{b} - \frac{1}{a} \right) + D (b - a) = P \frac{a + b}{2}
+        \quad 
+        \]
+    </p>
+</Body>
+</html>
