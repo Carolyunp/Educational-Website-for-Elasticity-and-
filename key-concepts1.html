@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/navbar.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">    
+    <link rel="stylesheet" href="styles/theory.css">
+    <script src="https://kit.fontawesome.com/f1091eb4c6.js" crossorigin="anonymous"></script>
+    <script src="scripts/navbar.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+    <script>document.addEventListener("DOMContentLoaded", ()=> {renderMathInElement(document.body)});</script>
+    <title>Key Concepts</title>
+    <style>
+        h2 {
+            font-size: 1.8em;
+        }
+        ol {
+            font-size: 1.1em;
+        }
+        li {
+            margin-bottom: 20px;
+        }
+        p {
+            margin-top: 30px;
+            font-size: 1.2em;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2>How to approach a question:</h2>
+    <ol>
+        <li>“Guess” \( \varphi(x, y) \) for a structure.</li>
+        <ul><li>This procedure is often iterative. In this module, you will be provided with a stress function.</li></ul>
+        <li>Apply biharmonic relationship</li>
+        <ul><li>The biharmonic equation is:
+        \[
+        \nabla^4 \varphi = \frac{\partial^4 \varphi}{\partial x^4} + 2\frac{\partial^4 \varphi}{\partial x^2 \partial y^2} + \frac{\partial^4 \varphi}{\partial y^4} = 0
+        \]
+        </li></ul>
+        <li>Calculate stresses by differentiation of \( \varphi(x, y) \)</li>
+        <ul><li>Stresses are derived as:
+        \[
+        \sigma_x = \frac{\partial^2 \varphi}{\partial x^2}, \quad \sigma_y = \frac{\partial^2 \varphi}{\partial y^2}, \quad \tau_{xy} = -\frac{\partial^2 \varphi}{\partial x \partial y}
+        \]
+        </li></ul>
+        <li>Compare stresses from 3) to the boundary conditions you see visually in the structure.</li>
+        <ul><li>This step involves ensuring the calculated stresses match the boundary conditions.</li></ul>
+        <li>Calculate strains from constitutive law</li>
+        <ul><li>Strains are calculated using:
+        \[
+        \epsilon_x = \frac{\sigma_x}{E} - \nu \left( \frac{\sigma_y}{E} \right), \quad \epsilon_y = -\nu \left( \frac{\sigma_x}{E} \right) + \frac{\sigma_y}{E}, \quad \gamma_{xy} = \frac{1}{G} \tau_{xy}
+        \]
+        </li></ul>
+        <li>Calculate displacement field by integration</li>
+        <ul><li>Displacements are obtained by integrating strain components:
+        \[
+        u(x, y) = \int \epsilon_x \, dx
+        \]
+        </li></ul>
+    </ol>
+    <p>These steps can be utilised to answer any question in Topic 1!</p>
+</body>
+</html>
