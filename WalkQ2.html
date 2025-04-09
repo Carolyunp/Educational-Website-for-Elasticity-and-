@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/navbar.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">    
+    <link rel="stylesheet" href="styles/theory.css">
+    <script src="https://kit.fontawesome.com/f1091eb4c6.js" crossorigin="anonymous"></script>
+    <script src="scripts/navbar.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+    <script>document.addEventListener("DOMContentLoaded", ()=> {renderMathInElement(document.body)});</script>
+    <title>Key Concepts</title>
+    <style>
+        h2 {
+            font-size: 1.8em;
+        }
+        ol {
+            font-size: 1.1em;
+        }
+        li {
+            margin-bottom: 20px;
+        }
+        p {
+            margin-top: 30px;
+            font-size: 1.2em;
+            text-align: center;
+        }
+    </style>
+</head>
+<Body>
+    <h1>Stress Analysis Around a Circular Hole in a Plate</h1>
+
+    <h2>Problem Statement</h2>
+    <p>
+        A section of an aircraft wing skin can be analyzed by the configuration of Figure 6. The plate 
+        is subjected to uniform tensile stress of magnitude \( S \) in the \( x \) and \( y \) directions, and at the 
+        origin, it contains a hole with radius \( a \). Calculate the stress state around the hole, commenting 
+        on the magnitude of these stresses at the boundary of the hole.
+    </p>
+
+    <div class="container">
+            <img src="styles/images/walkthroughq2.png" alt="question" >
+		</div>
+    <div class="container">    
+        <figcaption><strong>Figure 6: Stress Analysis of an Aircraft Wing Skin</strong></figcaption>
+    </div>
+
+    <hr>
+
+    <h3>Questions</h3>
+    <ol>
+        <li>
+            Derive the stress field equations around the hole based on the given stress function.
+            <span style="float: right;">[8 marks]</span>
+        </li>
+        <li>
+            Determine the boundary conditions and calculate the stress values at the hole's boundary.
+            <span style="float: right;">[3 marks]</span>
+        </li>
+        <li>
+            Identify the locations where the maximum and minimum stresses occur and provide their values.
+            <span style="float: right;">[4 marks]</span>
+        </li>
+    </ol>
+
+    <hr>
+
+    <h2>Solution Process</h2>
+
+    <h3>1. Stress Function and Governing Equations</h3>
+    <p>
+        The solution of the biharmonic equation in cylindrical polar coordinates is obtained using separation of variables:
+    </p>
+    <p>
+        \[
+        \phi = R(r) \Theta(\theta)
+        \]
+    </p>
+    <p>
+        One possible solution is:
+        \[
+        \phi = \left( A r^2 + B r^4 + \frac{C}{r^2} + D \right) \cos 2\theta
+        \]
+    </p>
+    <p>
+        The general solution for the stress function in a plate with a circular hole subjected to a uniform tensile stress \( S \) is:
+        \[
+        \phi = \frac{S}{2} (2r^2 - a^2 \ln r) - \frac{S}{4} \left( r^2 + \frac{a^4}{r^2} - 2a^2 \right) \cos 2\theta
+        \]
+    </p>
+
+    <hr>
+
+    <h3>2. Stress Field Expressions</h3>
+    <p>The stress components derived from the stress function are:</p>
+    <p>
+        \[
+        \sigma_r = \frac{S}{2} \left( 1 - \frac{a^2}{r^2} \right) + \frac{S}{2} \left( 1 + \frac{3a^4}{r^4} - \frac{4a^2}{r^2} \right) \cos 2\theta
+        \]
+    </p>
+    <p>
+        \[
+        \sigma_{\theta} = \frac{S}{2} \left( 1 + \frac{a^2}{r^2} \right) - \frac{S}{2} \left( 1 + \frac{3a^4}{r^4} \right) \cos 2\theta
+        \]
+    </p>
+    <p>
+        \[
+        \tau_{r\theta} = -\frac{S}{2} \left( 1 - \frac{3a^4}{r^4} + \frac{2a^2}{r^2} \right) \sin 2\theta
+        \]
+    </p>
+
+    <hr>
+
+    <h3>3. Boundary Conditions and Stress at the Hole</h3>
+    <p>At the boundary of the hole \( r = a \), the stress components simplify to:</p>
+    <p>
+        \[
+        \sigma_r = 0, \quad \sigma_{\theta} = S - 2S \cos 2\theta, \quad \tau_{r\theta} = 0
+        \]
+    </p>
+
+    <hr>
+
+    <h3>4. Maximum and Minimum Stresses</h3>
+    <p>The circumferential stress reaches its maximum at \( \theta = \frac{\pi}{2}, \frac{3\pi}{2} \):</p>
+    <p>
+        \[
+        \sigma_{\theta, \max} = 3S
+        \]
+    </p>
+    <p>The minimum circumferential stress occurs at \( \theta = 0, \pi \):</p>
+    <p>
+        \[
+        \sigma_{\theta, \min} = -S
+        \]
+    </p>
+
+    <hr>
+
+    <h3>5. Alternative Expression for Stresses</h3>
+    <p>Another equivalent formulation for stress components is:</p>
+    <p>
+        \[
+        \sigma_r = S \left( 1 - \frac{a^2}{r^2} \right)
+        \]
+    </p>
+    <p>
+        \[
+        \sigma_{\theta} = S \left( 1 + \frac{a^2}{r^2} \right)
+        \]
+    </p>
+    <p>
+        \[
+        \tau_{r\theta} = 0
+        \]
+    </p>
+    <p>At the edge of the hole \( r = a \), we obtain:</p>
+    <p>
+        \[
+        \sigma_r = \tau_{r\theta} = 0, \quad \sigma_{\theta} = 2S
+        \]
+    </p>
+    <p>Thus, the transverse tensile stress reduces the stress concentration at the hole.</p>
+
+</Body>
+</html>
