@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assumptions and Concepts</title>
+    <link rel="stylesheet" href="styles/navbar.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script defer src="https://kit.fontawesome.com/f1091eb4c6.js" crossorigin="anonymous"></script>
+    <script src="scripts/navbar.js"></script>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            top: 0;
+        }
+        h1 {
+            text-align: center;
+            color: #007BFF;
+        }
+        .quiz-section {
+            margin-top: 30px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        .question {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .options {
+            margin-top: 10px;
+        }
+        .option {
+            margin: 5px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .option:hover {
+            background-color: #f9f9f9;
+        }
+        .option.correct {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+        .option.incorrect {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+        .feedback {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+        .feedback.correct {
+            background-color: #d4edda;
+            border-left: 5px solid #28a745;
+        }
+        .feedback.incorrect {
+            background-color: #f8d7da;
+            border-left: 5px solid #dc3545;
+        }
+        .btn {
+            margin-top: 10px;
+            padding: 8px 12px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background: #0056b3;
+        }
+    </style>
+    <!-- MathJax for LaTeX rendering -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Assumptions and Concepts</h1>
+        <p>Test your knowledge of the Theory of Elasticity and Stress concepts. Select the correct answer for each question and see the feedback!</p>
+
+        <!-- Question 1 -->
+        <div class="quiz-section">
+            <div class="question">Q1: Which of the following is <strong>NOT</strong> a material assumption in the theory of elasticity?</div>
+            <div class="options">
+                <div class="option" data-correct="false">A) Continuity</div>
+                <div class="option" data-correct="false">B) Homogeneity</div>
+                <div class="option" data-correct="false">C) Isotropy</div>
+                <div class="option" data-correct="true">D) Plasticity</div>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="quiz-section">
+            <div class="question">Q2: What does the <strong>continuity assumption</strong> in the theory of elasticity imply?</div>
+            <div class="options">
+                <div class="option" data-correct="false">A) The material properties are the same in all directions.</div>
+                <div class="option" data-correct="true">B) Every material point is infinitesimally close to the next.</div>
+                <div class="option" data-correct="false">C) The material recovers its original shape after loading.</div>
+                <div class="option" data-correct="false">D) The material has no internal discontinuities like cracks or voids.</div>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="quiz-section">
+            <div class="question">Q3: Which of the following materials would <strong>violate</strong> the homogeneity assumption in the theory of elasticity?</div>
+            <div class="options">
+                <div class="option" data-correct="false">A) A metal plate</div>
+                <div class="option" data-correct="true">B) Reinforced concrete</div>
+                <div class="option" data-correct="false">C) A rubber sheet</div>
+                <div class="option" data-correct="false">D) A glass pane</div>
+            </div>
+            <div class="feedback"></div>
+        </div>
+		
+		<!-- Question 4 -->
+        <div class="quiz-section">
+            <div class="question">Q4: Which of the following materials is <strong>isotropic</strong>?</div>
+            <div class="options">
+                <div class="option" data-correct="false">A) Wood</div>
+                <div class="option" data-correct="false">B) Fiber-reinforced composites</div>
+                <div class="option" data-correct="true">C) A metal plate</div>
+                <div class="option" data-correct="false">D) Carbon fiber</div>
+            </div>
+            <div class="feedback"></div>
+        </div>
+		
+		<!-- Question 5 -->
+        <div class="quiz-section">
+            <div class="question">Q5: What is the definition of <strong>traction</strong> in the context of elasticity?</div>
+            <div class="options">
+                <div class="option" data-correct="true">A) The internal force per unit area acting on a surface.</div>
+                <div class="option" data-correct="false">B) The total force applied to a body.</div>
+                <div class="option" data-correct="false">C) The deformation of a material under load.</div>
+                <div class="option" data-correct="false">D) The stress component normal to a surface.</div>
+            </div>
+            <div class="feedback"></div>
+        </div>
+		
+		<!-- Question 6 -->
+        <div class="quiz-section">
+            <div class="question">Q6: Which of the following correctly represents the <strong>stress tensor</strong> in 3D?</div>
+            <div class="options">
+                <div class="option" data-correct="false">A) 
+                    \[
+                    \begin{bmatrix}
+                    \sigma_{xx} & \tau_{yx} & \tau_{zx} \\
+                    \tau_{xy} & \sigma_{yy} & \tau_{zy} \\
+                    \tau_{xz} & \tau_{yz} & \sigma_{zz}
+                    \end{bmatrix}
+                    \]
+                </div>
+                <div class="option" data-correct="true">B) 
+                    \[
+                    \begin{bmatrix}
+                    \sigma_{xx} & \tau_{xy} & \tau_{xz} \\
+                    \tau_{yx} & \sigma_{yy} & \tau_{yz} \\
+                    \tau_{zx} & \tau_{zy} & \sigma_{zz}
+                    \end{bmatrix}
+                    \]
+                </div>
+                <div class="option" data-correct="false">C) 
+                    \[
+                    \begin{bmatrix}
+                    \sigma_{xx} & \sigma_{yy} & \sigma_{zz} \\
+                    \tau_{xy} & \tau_{yz} & \tau_{zx} \\
+                    \tau_{yx} & \tau_{zy} & \tau_{xz}
+                    \end{bmatrix}
+                    \]
+					</div>
+                <div class="option" data-correct="false">D) 
+                    \[
+                    \begin{bmatrix}
+                    \sigma_{xx} & \tau_{yx} & \tau_{zx} \\
+                    \tau_{xy} & \sigma_{yy} & \tau_{zy} \\
+                    \tau_{xz} & \tau_{yz} & \sigma_{zz}
+                    \end{bmatrix}
+                    \]
+                </div>
+            </div>
+            <div class="feedback"></div>
+        </div>
+		
+		<!-- Question 7 -->
+        <div class="quiz-section">
+            <div class="question">Q7: Which of the following is a <strong>deformation assumption</strong> in the theory of elasticity?</div>
+            <div class="options">
+                <div class="option" data-correct="false">A) Large deformations are considered.</div>
+                <div class="option" data-correct="true">B) Higher-order terms of deformation are negligible.</div>
+                <div class="option" data-correct="false">C) The material undergoes plastic deformation.</div>
+                <div class="option" data-correct="false">D) The geometry of the object changes significantly under load.</div>
+            </div>
+            <div class="feedback"></div>
+        </div>
+		
+		<!-- Question 8 -->
+        <div class="quiz-section">
+            <div class="question">Q8: Which of the following is true about <strong>load assumptions</strong> in the theory of elasticity?</div>
+            <div class="options">
+                <div class="option" data-correct="false">A) Loads are always a function of deformation.</div>
+                <div class="option" data-correct="true">B) Conservative forces are assumed, meaning they do not change direction with deformation.</div>
+                <div class="option" data-correct="false">C) Non-conservative forces are always considered.</div>
+                <div class="option" data-correct="false">D) Loads are applied only in the elastic region.</div>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+
+        <button class="btn" onclick="resetQuiz()">Reset Quiz</button>
+    </div>
+
+    <script>
+        // Add event listeners to options
+        const options = document.querySelectorAll('.option');
+        options.forEach(option => {
+            option.addEventListener('click', function () {
+                const isCorrect = this.getAttribute('data-correct') === 'true';
+                const feedback = this.parentElement.nextElementSibling;
+
+                // Clear previous feedback
+                feedback.innerHTML = '';
+                feedback.classList.remove('correct', 'incorrect');
+
+                // Mark the selected option
+                this.classList.add(isCorrect ? 'correct' : 'incorrect');
+
+                // Show feedback
+                feedback.innerHTML = isCorrect ? '✅ Correct!' : '❌ Incorrect. Try again!';
+                feedback.classList.add(isCorrect ? 'correct' : 'incorrect');
+                feedback.style.display = 'block';
+            });
+        });
+
+        // Reset quiz function
+        function resetQuiz() {
+            const options = document.querySelectorAll('.option');
+            const feedbacks = document.querySelectorAll('.feedback');
+
+            options.forEach(option => {
+                option.classList.remove('correct', 'incorrect');
+            });
+
+            feedbacks.forEach(feedback => {
+                feedback.innerHTML = '';
+                feedback.classList.remove('correct', 'incorrect');
+                feedback.style.display = 'none';
+            });
+        }
+    </script>
+</body>
+</html>
