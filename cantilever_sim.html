@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/navbar.css">
+    <script src="scripts/navbar.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/f1091eb4c6.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles/Cylinder.css">
+    <script>document.addEventListener("DOMContentLoaded", ()=> {renderMathInElement(document.body)});</script>
+    <title>Hollow Cylinder Subjected to Internal and External Pressures</title>
+</head>
+<body>
+
+    <h1 class="title">Cantilever Beam Simulation</h1>
+
+    <div class="layout-container">
+        
+        <!-- Input Panel -->
+        <div class="inputBar">
+            <h3>Select Load Conditions</h3>
+            <label><input type="checkbox" id="T0" onchange="updateSimulation()"> Apply Axial Force \(T_0\) </label><br>
+            <label><input type="checkbox" id="M0" onchange="updateSimulation()"> Apply Moment \(M_0\) </label><br>
+            <label><input type="checkbox" id="F0" onchange="updateSimulation()"> Apply Shear Force \(F_0\) </label><br>
+
+            <button onclick="updateSimulation()">Simulate</button>
+            <button onclick="resetSimulation()">Reset</button>
+            <button onclick="showSummary()">Summary</button>
+        </div>
+
+        <!-- Display Area -->
+        <div class="display-container">
+            <h3>Selected Configuration</h3>
+            <img id="beamImage" src="" alt="Beam Configuration" width="300">
+            
+            <div id="resultArea">
+                <h3>Solution Output</h3>
+                <p><b>Beta Coefficient:</b> <span id="betaValue">-</span></p>
+                
+                <h4>Stress Components:</h4>
+                <p id="sigmaX"></p>
+                <p id="sigmaY"></p>
+                <p id="tauXY"></p>
+
+                <h4>Displacement Components:</h4>
+                <p id="dispU"></p>
+                <p id="dispV"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Solution Process Section -->
+    <div id="solutionSteps" class="solution-container">
+        <h3>Calculation Process</h3>
+        <div id="calculationOutput"></div>
+    </div>
+
+    <div id="summaryArea"></div>
+
+    <script src="scripts/cantilever_draw.js"></script>
+
+</body>
+</html>
