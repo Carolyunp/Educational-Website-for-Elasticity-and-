@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/navbar.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">    
+    <link rel="stylesheet" href="styles/theory.css">
+    <script src="https://kit.fontawesome.com/f1091eb4c6.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+    <script>document.addEventListener("DOMContentLoaded", ()=> {renderMathInElement(document.body)});</script>
+    <script src="scripts/navbar.js"></script>
+    <title>Theory</title>
+    <style>
+        .container {
+            text-align: center;
+        }
+        img {
+            display: inline-block;
+        }
+        h1 {
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+<body>  
+    <h2>Formulas for Elasticity</h2>
+
+    <div id="StrainDisplacement">
+        <h3>1. Strain-Displacement Relationships</h3>
+        <p>The strain-displacement relationships are:
+            \[
+            \epsilon_x = \frac{\partial u}{\partial x}, \quad \epsilon_y = \frac{\partial v}{\partial y}, \quad \epsilon_z = \frac{\partial w}{\partial z}
+            \]
+            \[
+            \gamma_{xy} = \frac{\partial u}{\partial y} + \frac{\partial v}{\partial x}, \quad \gamma_{xz} = \frac{\partial u}{\partial z} + \frac{\partial w}{\partial x}, \quad \gamma_{yz} = \frac{\partial v}{\partial z} + \frac{\partial w}{\partial y}
+            \]
+        </p>
+    </div>
+
+    <div id="HookesLaw">
+        <h3>2. Generalised Hooke’s Law for Isotropic Materials</h3>
+        <p>For isotropic materials, the generalised Hooke’s law is expressed as:
+            \[
+            \begin{bmatrix} 
+            \epsilon_{xx} \\ 
+            \epsilon_{yy} \\ 
+            \epsilon_{zz} \\ 
+            \gamma_{xy} \\ 
+            \gamma_{yz} \\ 
+            \gamma_{zx} 
+            \end{bmatrix}
+            = \frac{1}{E}
+            \begin{bmatrix} 
+            1 & -\nu & -\nu & 0 & 0 & 0 \\
+            -\nu & 1 & -\nu & 0 & 0 & 0 \\
+            -\nu & -\nu & 1 & 0 & 0 & 0 \\
+            0 & 0 & 0 & 2(1+\nu) & 0 & 0 \\
+            0 & 0 & 0 & 0 & 2(1+\nu) & 0 \\
+            0 & 0 & 0 & 0 & 0 & 2(1+\nu)
+            \end{bmatrix}
+            \begin{bmatrix}
+            \sigma_{xx} \\
+            \sigma_{yy} \\
+            \sigma_{zz} \\
+            \tau_{xy} \\
+            \tau_{yz} \\
+            \tau_{zx}
+            \end{bmatrix}
+            \]
+        </p>
+    </div>
+
+
+    <div id="Equilibrium">
+        <h3>3. Force Equilibrium Relationships</h3>
+        <p>The force equilibrium relationships are given by:
+            \[
+            \frac{\partial \sigma_{xx}}{\partial x} + \frac{\partial \tau_{yx}}{\partial y} + \frac{\partial \tau_{zx}}{\partial z} + f_x = 0
+            \]
+            \[
+            \frac{\partial \tau_{xy}}{\partial x} + \frac{\partial \sigma_{yy}}{\partial y} + \frac{\partial \tau_{zy}}{\partial z} + f_y = 0
+            \]
+            \[
+            \frac{\partial \tau_{xz}}{\partial x} + \frac{\partial \tau_{yz}}{\partial y} + \frac{\partial \sigma_{zz}}{\partial z} + f_z = 0
+            \]
+        </p>
+    </div>
+
+    <div id="StressCompatibility">
+        <h3>4. Stress Compatibility in 2D</h3>
+        <p>The stress compatibility equations for 2D are given by:
+            \[
+            \left( \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} \right) (\sigma_x + \sigma_y) = -\beta \left( \frac{\partial f_z}{\partial x} + \frac{\partial f_y}{\partial y} \right)
+            \]
+            where \( \beta = 1 + \nu \) for plane stress, and \( \beta = \frac{1}{1 - \nu} \) for plane strain.
+        </p>
+    </div>
+
+    <div id="BiharmonicOperator">
+        <h3>5. Biharmonic Operator in 2D (Cartesian Coordinates)</h3>
+        <p>The biharmonic operator in Cartesian coordinates is defined as:
+            \[
+            \nabla^4 = \frac{\partial^4}{\partial x^4} + 2\frac{\partial^4}{\partial x^2 \partial y^2} + \frac{\partial^4}{\partial y^4}
+            \]
+        </p>
+    </div>
+
+    <div id="StressAiryFunction">
+        <h3>6. Relationship Between Stress Components and Airy Stress Function in 2D</h3>
+        <p>The stress components and the Airy stress function in 2D are related by:
+            \[
+            \sigma_x = \frac{\partial^2 \phi}{\partial y^2}, \quad \sigma_y = \frac{\partial^2 \phi}{\partial x^2}, \quad \tau_{xy} = -\frac{\partial^2 \phi}{\partial x \partial y}
+            \]
+        </p>
+        <p>The stress components in polar coordinates are:
+            \[
+            \sigma_r = \frac{\partial^2 \phi}{\partial r^2} + \frac{1}{r} \frac{\partial \phi}{\partial r} + \frac{1}{r^2} \frac{\partial^2 \phi}{\partial \theta^2}
+            \]
+            \[
+            \tau_r = \frac{\partial^2 \phi}{\partial r^2} + \frac{1}{r} \frac{\partial \phi}{\partial r}
+            \]
+            \[
+            \tau_{\theta} = \frac{1}{r} \frac{\partial^2 \phi}{\partial r^2}
+            \]
+        </p>
+    </div>
+
+    <div id="BiharmonicOperatorPolar">
+    <h3>7. Biharmonic Operator in Polar Coordinates</h3>
+    <p>The biharmonic operator in polar coordinates is given by:
+        \[
+        \left( \frac{\partial^2}{\partial r^2} + \frac{1}{r} \frac{\partial}{\partial r} + \frac{1}{r^2} \frac{\partial^2}{\partial \theta^2} \right)
+        \left( \frac{\partial^2 \phi}{\partial r^2} + \frac{1}{r} \frac{\partial \phi}{\partial r} + \frac{1}{r^2} \frac{\partial^2 \phi}{\partial \theta^2} \right) = 0
+        \]
+    </p>
+</div>
+
+    <div id="StressAiryFunctionPolar">
+    <h3>8. Relationship Between Stress Components and Airy Stress Function in Polar Coordinates</h3>
+    <p>The stress components and the Airy stress function in polar coordinates are:
+        \[
+        \sigma_r = \frac{1}{r} \frac{\partial \phi}{\partial r} + \frac{1}{r^2} \frac{\partial^2 \phi}{\partial \theta^2}, \quad \sigma_\theta = \frac{\partial^2 \phi}{\partial r^2}, \quad \tau_{r\theta} = -\frac{\partial}{\partial r} \left( \frac{1}{r} \frac{\partial \phi}{\partial \theta} \right)
+        \]
+    </p>
+</div>
+
+</body>
+</html>
