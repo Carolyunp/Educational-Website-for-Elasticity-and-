@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abaqus & Python Integration</title>
+    <link rel="stylesheet" href="styles/navbar.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script defer src="https://kit.fontawesome.com/f1091eb4c6.js" crossorigin="anonymous"></script>
+    <script src="scripts/navbar.js"></script>
+    <style>
+        body {
+            font-family: "Montserrat", sans-serif;
+        }
+        .container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    
+    <header id="home" class="hero text-center text-white d-flex align-items-center justify-content-center" style="background-color: #444; padding: 50px;">
+        <div>
+            <h1>Integrating Abaqus with Python</h1>
+            <p>Enhancing Structural Analysis through Automation & Machine Learning</p>
+        </div>
+    </header>
+
+    <section id="about" class="container py-5">
+        <h2>About This Project – A Journey into Aircraft Structural Optimization</h2>
+        <p>In the world of modern aviation, safety and efficiency are paramount. Every kilogram saved in an aircraft's structure translates to fuel savings, lower emissions, and increased payload capacity. However, achieving this delicate balance between strength and weight is no easy feat. Engineers rely on sophisticated Finite Element Analysis (FEA) tools like Abaqus to simulate real-world stresses and ensure that aircraft components can withstand extreme conditions.</p>
+        <p>One such critical component is the mono-stiffened panel—a reinforced structure found in fuselages, wings, and other load-bearing parts of an aircraft. These panels are designed to resist buckling and deformation under high loads, making their optimization a key challenge in aerospace engineering. Traditionally, extensive physical testing was required to validate their performance, but with the rapid advancement of computational tools, we now have smarter, faster ways to predict their behavior.</p>
+		<div class="text-center">
+    <img src="styles/images/monostiffness.png" alt="Mono panel" class="img-fluid">
+    <p class="mt-2"><em>Figure: Mono-stiffened panel used in aircraft structures</em></p>
+</div>
+
+		<h2>What You’ll Discover</h2>
+		 <p>This project dives into the fascinating interplay between <strong>Abaqus</strong>, <strong>Python automation</strong>, and <strong>Machine Learning</strong> in the context of aircraft structural optimization. You'll explore:</p>
+    <ul>
+        <li>How to model and analyze a <strong>mono-stiffened panel</strong> in Abaqus</li>
+        <li>Why <strong>plates</strong> are used as a baseline for simulation before panels</li>
+        <li>The importance of <strong>mesh refinement</strong> and <strong>material selection</strong></li>
+        <li>How <strong>Python scripts</strong> automate the tedious tasks of FEA</li>
+        <li>How <strong>ML techniques</strong> can predict stress distributions and buckling loads</li>
+    </ul>
+    </section>
+
+    <section id="case-study" class="container py-5">
+        <h2>Case Study: Aircraft Structural Analysis</h2>
+        <h3>Background</h3>
+        <p>Traditional aircraft safety assessments rely heavily on physical experiments, which are expensive, time-consuming, and resource-intensive. The adoption of Finite Element Analysis (FEA) provides a cost-effective alternative, allowing engineers to simulate complex stress and strain distributions without the need for prototypes.</p>
+        
+        <h3>Literature Review</h3>
+        <p>Numerous studies have validated the effectiveness of FEA in aircraft structural analysis. Research has shown that FEA-based simulations closely match experimental results in predicting failure mechanisms in fuselage panels. Additionally, advancements in machine learning (ML) have introduced data-driven optimizations, reducing unnecessary conservatism in safety factor design.</p>
+        
+        <h3>Analysis Object</h3>
+        <p>This study focuses on two structural components commonly found in aircraft design: a perforated plate (Panel with Hole) and a mono-stiffened panel. These models serve as test cases for analyzing stress distribution, buckling behavior, and load-bearing capacity under different conditions.</p>
+        
+        <h3>Main Tasks</h3>
+        <ul>
+            <li>Use <strong>FEA</strong> to simulate stress distribution and buckling behavior in selected structural components.</li>
+            <li>Automate the simulation process using <strong>Python scripting</strong> to modify design parameters and extract data efficiently.</li>
+            <li>Implement <strong>machine learning models</strong> to predict structural responses, optimize safety factors, and improve computational efficiency.</li>
+        </ul>
+    </section>
+
+    <section id="abaqus" class="container py-5 bg-light">
+        <h2>Abaqus Modeling & Analysis</h2>
+        <h3>Panel vs. Plate</h3>
+        <p>A <strong>panel</strong> is a structural component with stiffeners attached to increase load-bearing capacity and stability, while a <strong>plate</strong> is a flat sheet without reinforcements. The key differences are:</p>
+        <ul>
+            <li><strong>Shape:</strong> A plate is a simple flat surface, while a panel includes stiffeners.</li>
+            <li><strong>Material Properties:</strong> Plates often serve as baseline models for analysis, whereas panels introduce additional complexity with composite layering.</li>
+            <li><strong>Boundary Conditions:</strong> Plates typically use simple constraints, while panels require more detailed constraints to account for stiffeners.</li>
+        </ul>
+        <p>Before analyzing a panel, a plate is simulated to establish a baseline stress distribution and computational efficiency.Strart with a Plate is a good choice!</p>
+        
+        <h3>Creating a Part in Abaqus</h3>
+        <p>The mono-stiffened panel is modeled using the following steps:</p>
+        <ul>
+            <li>Define the panel dimensions and stiffener positions.</li>
+			<div class="text-center">
+    <img src="styles/images/stiffener.png" alt="Mono panel" class="img-fluid">
+    <p class="mt-2"><em>Figure: Single Stiffener in Abaqus</em></p>
+</div>
+            <li>Assign a composite layup for stiffness optimization.</li>
+			<div class="text-center">
+    <img src="styles/images/Monoflowchart.png" alt="Mono panel" class="img-fluid">
+    <p class="mt-2"><em>Figure: Flowchart showing the asembly of the stifened panel</em></p>
+</div>
+        </ul>
+        
+        <h3>Meshing Strategy</h3>
+        <p>A mesh convergence study is performed to determine the optimal mesh size. The figure below shows the relationship between <strong>global size, number of mesh, and maximum stress</strong>.</p>
+        <img src="mesh-convergence.png" alt="Mesh Convergence Study" class="img-fluid rounded shadow-sm">
+        <p>The optimal mesh size is chosen at **0.3 mm**, balancing accuracy and computational cost【56:6†Intermediate Report haotong.pdf】.</p>
+        
+        <h3>Assigning Material</h3>
+        <p>The material used is **composite fiber-reinforced polymer (CFRP)** with the following properties:</p>
+        <ul>
+            <li>**Young’s Modulus:** E1 = 138 GPa, E2 = 9.5 GPa</li>
+            <li>**Poisson’s Ratio:** ν12 = 0.28</li>
+            <li>**Density:** 1400 kg/m³</li>
+        </ul>
+        <p>Elastic properties are chosen over plastic properties since failure is evaluated based on buckling rather than plastic deformation【56:1†Reliability-based bottom-up manufacturing cost optimisation for composite aircraft structures.pdf】.</p>
+        
+        <h3>Assembly and Steps</h3>
+        <ul>
+            <li>Define reference points for stiffener and plate alignment.</li>
+            <li>Apply **static load steps** for compression analysis.</li>
+        </ul>
+        
+        <h3>Boundary Conditions</h3>
+        <p>The panel is clamped on one side and loaded on the opposite edge with **200 MPa compressive force** to simulate in-flight stress conditions【56:1†Reliability-based bottom-up manufacturing cost optimisation for composite aircraft structures.pdf】.</p>
+        
+        <h3>Job Settings</h3>
+        <p>The Abaqus job is configured to run with **adaptive meshing**, ensuring accurate stress distribution results.</p>
+    </section>
+
+    <section id="python" class="container py-5">
+    <h2>Python Automation in Abaqus</h2>
+    <div class="row">
+        <div class="col-md-8">
+            <p>Using Python scripting, we automate model creation, simulation execution, and data extraction, significantly reducing manual effort and enabling batch processing of design variations.</p>
+            
+            <h3>Key Automation Features</h3>
+            <ul>
+                <li><strong>Parameterized modeling:</strong> Dynamically adjust panel dimensions and stiffener geometry</li>
+                <li><strong>Automated mesh generation:</strong> Consistent meshing across design variations</li>
+                <li><strong>Batch processing:</strong> Submit multiple simulations sequentially</li>
+                <li><strong>Results extraction:</strong> Automatically parse Abaqus output files</li>
+            </ul>
+            
+            <div class="alert alert-info mt-4">
+                <i class="fas fa-info-circle me-2"></i>
+                The complete Python script is available for download below. This script works with Abaqus CAE 2022+ and requires proper file paths configuration.
+            </div>
+        </div>
+        <div class="col-md-4 text-center">
+            <div class="card border-primary">
+                <div class="card-header bg-primary text-white">
+                    <i class="fas fa-download me-2"></i>Download Resources
+                </div>
+                <div class="card-body">
+                    <a href="scripts/abaqus_script_v2.py" download class="btn btn-outline-primary mb-2 w-100">
+                        <i class="fas fa-file-code me-2"></i>Abaqus Python Script
+                    </a>
+                    <a href="scripts/Mono_stiffened_2.cae." download class="btn btn-outline-secondary w-100">
+                        <i class="fas fa-file-pdf me-2"></i>Mono-stiffened Panel CAE 
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h3 class="mt-4">Core Functionality</h3>
+    <div class="card mb-4">
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs" id="scriptTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="model-tab" data-bs-toggle="tab" data-bs-target="#model" type="button" role="tab">Model Update</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="simulation-tab" data-bs-toggle="tab" data-bs-target="#simulation" type="button" role="tab">Simulation Control</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="results-tab" data-bs-toggle="tab" data-bs-target="#results" type="button" role="tab">Results Extraction</button>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <div class="tab-content" id="scriptTabsContent">
+                <div class="tab-pane fade show active" id="model" role="tabpanel">
+                    <pre><code class="language-python">def update_model(params):
+    """Update model dimensions and properties"""
+    # Update section thicknesses
+    mdb.models['Model-1'].sections['Section-1'].setValues(
+        thickness=params["Section_1_thickness"])
+    
+    # Update stiffener geometry parameters
+    mdb.models['Model-1'].sketches['__edit__'].parameters['Stiffener_L_1'].setValues(
+        expression=str(params["Stiffener_L_1"]))
+    
+    # Regenerate mesh and assembly
+    mdb.models['Model-1'].parts['Plate'].generateMesh()
+    mdb.models['Model-1'].rootAssembly.regenerate()</code></pre>
+                </div>
+                <div class="tab-pane fade" id="simulation" role="tabpanel">
+                    <pre><code class="language-python">def run_simulation(job_name):
+    """Submit and monitor Abaqus job"""
+    mdb.Job(name=job_name, model='Model-1',
+            memory=90, memoryUnits=PERCENTAGE,
+            nodalOutputPrecision=SINGLE, numCpus=4)
+    
+    mdb.jobs[job_name].submit()
+    mdb.jobs[job_name].waitForCompletion()</code></pre>
+                </div>
+                <div class="tab-pane fade" id="results" role="tabpanel">
+                    <pre><code class="language-python">def extract_results(odb_path):
+    """Extract eigenvalues from results"""
+    odb = openOdb(path=odb_path)
+    STEP = odb.steps.values()[0]
+    
+    # Get minimum eigenvalue from first frame
+    frame = STEP.frames[1]
+    MinEigen = float(frame.description.split('EigenValue = ')[1].split()[0])
+    
+    return MinEigen</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="alert alert-warning">
+        <i class="fas fa-exclamation-triangle me-2"></i>
+        <strong>Note:</strong> Before using the script, ensure you have:
+        <ul class="mt-2">
+            <li>Abaqus CAE installed with Python API access</li>
+            <li>Proper file permissions in the working directory</li>
+            <li>Base model file (Mono_Stiffened_2.cae) in the specified location</li>
+        </ul>
+    </div>
+</section>
+
+    <section id="results" class="container py-5 bg-light">
+        <h2>Results & Analysis</h2>
+        <p>Comparison of different simulation approaches reveals significant efficiency gains through Python automation.</p>
+        <img src="stress-results.png" alt="Stress Analysis Results" class="img-fluid rounded shadow-sm">
+    </section>
+
+    <section id="impact" class="container py-5">
+        <h2>Research Impact</h2>
+        <p>This project demonstrates how integrating scripting and machine learning can improve structural analysis and safety assessment in the aerospace industry.</p>
+    </section>
+
+    <footer class="bg-dark text-white text-center py-3">
+        &copy; 2025 Abaqus & Python Integration | Designed for Engineering Applications
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
