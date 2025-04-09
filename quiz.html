@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engineering Stress Function Quiz</title>
+    <link rel="stylesheet" href="styles/navbar.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"></script>
+    <script src="https://kit.fontawesome.com/f1091eb4c6.js" crossorigin="anonymous"></script>
+    <script defer src="scripts/navbar.js"></script>
+    <script>document.addEventListener("DOMContentLoaded", function() { renderMathInElement(document.body); });</script>
+    <style>
+        body { 
+            font-family: 'Montserrat', sans-serif;
+            background-color: #eaeaea;
+        }
+        .quiz-container { 
+            width: 70%; 
+            margin: auto; 
+            padding: 20px; 
+            border: 1px solid #ccc; 
+            background: #fff9db; 
+            border-radius: 10px;
+        }
+        .question { 
+            margin-bottom: 20px; 
+            padding: 10px; 
+            background: #e6f0ff; 
+            border-radius: 5px; 
+        }
+        .options label { display: block; margin: 5px 0; }
+        .flag { cursor: pointer; color: red; font-weight: bold; float: right; }
+        .flag.active { background-color: yellow; }
+        .result { font-weight: bold; margin-top: 10px; padding: 10px; border-radius: 5px; }
+        .correct { background: #fff3cd; }
+        .incorrect { background: #ffe6e6; }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Engineering Stress Function Quiz</h1>
+        <div class="information">
+            <p>A simply supported beam of length \( 2L \), height \( 2h \), and depth \( t \) is in a state of plane stress. On its upper surface, it is subjected to a uniform pressure \( w \), as shown in the figure below. The beam is supported at each end by a shearing force/unit depth of magnitude \( wL \).</p>
+            <img src="styles/images/quiz_q1.png" alt="Beam Diagram">
+			<p>Consider for this question an Airy stress function of the form:</p>
+            <p>
+               \[
+               \phi(x,y) = \frac{w x^2}{8} \left\{ \left(\frac{y}{h}\right)^3 - 3 \frac{y}{h} - 2 \right\} 
+               + A y^3 - \frac{w y^5}{40 h^3}.
+               \]
+            </p>
+        </div>
+        
+        <div class="question" id="q1">
+            <span class="flag" onclick="toggleFlag('q1')">🚩</span>
+			<h2>Question 1:</h2>
+            <p>To solve this problem, we must first specify the conditions that the function must satisfy \(\phi(x,y)\)  and the boundary conditions (forces, stresses, displacement).Condition 1: The Airy stress function must always satisfy the following:</p>
+            <div class="options">
+                <label><input type="radio" name="q1" value="wrong"> \( \nabla^4 \phi(x,y) = \text{some other number} \)</label>
+                <label><input type="radio" name="q1" value="correct"> \( \nabla^4 \phi(x,y) = 0 \)</label>
+            </div>
+            <button onclick="checkAnswer('q1', 'correct')">Submit</button>
+            <p class="result" id="result-q1"></p>
+        </div>
+
+        <div class="question" id="q2">
+            <span class="flag" onclick="toggleFlag('q2')">🚩</span>
+			<h2>Question 2:</h2>
+            <p>Boundary Condition 2: At \( y = \pm h \), the horizontal stresses are:</p>
+            <div class="options">
+                <label><input type="radio" name="q2" value="wrong"> \( \tau_{xy} = w \)</label>
+                <label><input type="radio" name="q2" value="wrong"> \( \int_{-L}^{L} \tau_{xy} dx = 0 \)</label>
+                <label><input type="radio" name="q2" value="correct"> \( \tau_{xy} = 0 \)</label>
+                <label><input type="radio" name="q2" value="wrong"> \( \int_{-L}^{L} \tau_{xy} dx = -w \)</label>
+            </div>
+            <button onclick="checkAnswer('q2', 'correct')">Submit</button>
+            <p class="result" id="result-q2"></p>
+        </div>
+
+        <div class="question" id="q3">
+            <span class="flag" onclick="toggleFlag('q3')">🚩</span>
+			<h2>Question 3:</h2>
+            <p>Boundary Condition 3: At \( y = h \), the vertical stress is:</p>
+            <div class="options">
+                <label><input type="radio" name="q3" value="correct"> \( \sigma_y = -w \)</label>
+                <label><input type="radio" name="q3" value="wrong"> \( \sigma_y = w \)</label>
+                <label><input type="radio" name="q3" value="wrong"> \( \int_{-L}^{L} \sigma_y dx = -w \)</label>
+                <label><input type="radio" name="q3" value="wrong"> \( \sigma_y = 0 \)</label>
+            </div>
+            <button onclick="checkAnswer('q3', 'correct')">Submit</button>
+            <p class="result" id="result-q3"></p>
+        </div>
+		
+		<div class="question" id="q4">
+            <span class="flag" onclick="toggleFlag('q3')">🚩</span>
+			<h2>Question 4:</h2>
+            <p>Boundary Condition 4: At \( y = -h \), the vertical stress is:</p>
+            <div class="options">
+                <label><input type="radio" name="q4" value="correct"> \( \sigma_y = -w \)</label>
+                <label><input type="radio" name="q4" value="wrong"> \( \sigma_y = w \)</label>
+                <label><input type="radio" name="q4" value="wrong"> \( \int_{-L}^{L} \sigma_y dx = 0 \)</label>
+                <label><input type="radio" name="q4" value="wrong"> \( \sigma_y = 0 \)</label>
+            </div>
+            <button onclick="checkAnswer('q4', 'correct')">Submit</button>
+            <p class="result" id="result-q4"></p>
+        </div>
+		
+		<div class="question" id="q5">
+            <span class="flag" onclick="toggleFlag('q5')">🚩</span>
+            <h2>Question 5:</h2>
+            <p>Boundary Condition 5. At \( x = -L \) the vertical force is:</p>
+            <div class="options">
+                <label><input type="radio" name="q5" value="wrong"> \( \tau_{xy} = -wL \)</label>
+                <label><input type="radio" name="q5" value="correct"> \( \int_{-h}^{h} \tau_{xy} dy = -wL \)</label>
+                <label><input type="radio" name="q5" value="wrong"> \( \int_{-h}^{h} \tau_{xy} dy = wL \)</label>
+                <label><input type="radio" name="q5" value="wrong"> \( \tau_{xy} = wL \)</label>
+            </div>
+            <button onclick="checkAnswer('q5')">Submit</button>
+            <p class="result" id="result-q5"></p>
+        </div>
+		
+		<div class="question" id="q6">
+            <span class="flag" onclick="toggleFlag('q6')">🚩</span>
+            <h2>Question 6:</h2>
+            <p>Boundary Condition 6. At \( x = L \) the vertical force is:</p>
+            <div class="options">
+                <label><input type="radio" name="q6" value="wrong"> \( \tau_{xy} = wL \)</label>
+                <label><input type="radio" name="q6" value="correct"> \( \int_{-h}^{h} \tau_{xy} dy = wL \)</label>
+                <label><input type="radio" name="q6" value="wrong"> \( \tau_{xy} = -wL \)</label>
+                <label><input type="radio" name="q6" value="wrong"> \( \int_{-h}^{h} \tau_{xy} dy = -wL \)</label>
+            </div>
+            <button onclick="checkAnswer('q6')">Submit</button>
+            <p class="result" id="result-q6"></p>
+        </div>
+		
+		 <div class="question" id="q7">
+            <span class="flag" onclick="toggleFlag('q7')">🚩</span>
+            <h2>Question 7:</h2>
+            <p>Boundary Condition 7. At \( x = \pm L \) the horizontal force is:</p>
+            <div class="options">
+                <label><input type="radio" name="q7" value="wrong"> \( \sigma_x = 0 \)</label>
+                <label><input type="radio" name="q7" value="correct"> \( \int_{-h}^{h} \sigma_x dy = 0 \)</label>
+                <label><input type="radio" name="q7" value="wrong"> \( \int_{-h}^{h} \sigma_x dy = wL \)</label>
+                <label><input type="radio" name="q7" value="wrong"> \( \sigma_x = wL \)</label>
+            </div>
+            <button onclick="checkAnswer('q7')">Submit</button>
+            <p class="result" id="result-q7"></p>
+        </div>
+		
+		<div class="question" id="q8">
+            <span class="flag" onclick="toggleFlag('q8')">🚩</span>
+            <h2>Question 8:</h2>
+            <p>Boundary Condition 8. At \( x = \pm L \) the moment is:</p>
+            <div class="options">
+                <label><input type="radio" name="q8" value="wrong"> \(M = \int_{-h}^{h} \sigma_x dy = 0\)</label>
+                <label><input type="radio" name="q8" value="wrong"> \(M = \int_{-h}^{h} \tau_{xy} y dy = 0\)</label>
+                <label><input type="radio" name="q8" value="correct"> \(M = \int_{-h}^{h} \sigma_{x} y dy = 0\)</label>
+                <label><input type="radio" name="q8" value="wrong"> \(M = \int_{-h}^{h} \sigma_y x dy = 0\)</label>
+            </div>
+            <button onclick="checkAnswer('q8')">Submit</button>
+            <p class="result" id="result-q8"></p>
+        </div>
+		
+		<div class="question" id="q9">
+            <span class="flag" onclick="toggleFlag('q9')">🚩</span>
+            <h2>Question 9:</h2>
+            <p>Now we are ready to calculate the stress field from the stress function. Doing this we find:</p>
+            <p>\[ \sigma_x = \frac{\partial^2 \phi}{\partial y^2} = \frac{3}{4} \frac{w}{h^3} x^2 y + 6Ay - \frac{w}{2} \left( \frac{y}{h} \right)^a \]</p>
+            <p>with the value of the exponent \( a \) being:</p>
+            <input type="text" id="answer-q9">
+            <button onclick="checkAnswer('q9')">Submit</button>
+            <p class="result" id="result-q9"></p>
+        </div>
+
+        <div class="question" id="q10">
+            <span class="flag" onclick="toggleFlag('q10')">🚩</span>
+            <h2>Question 10:</h2>
+            <p>Calculating \( \sigma_y \) we find:</p>
+            <p>\[ \sigma_y = \frac{\partial^2 \phi}{\partial x^2} = \frac{w}{4} \left( \frac{y^b}{h^3} - 3 \frac{y}{h} - 2 \right) \]</p>
+            <p>with the value of the exponent \( b \) being:</p>
+            <input type="text" id="answer-q10">
+            <button onclick="checkAnswer('q10')">Submit</button>
+            <p class="result" id="result-q10"></p>
+        </div>
+		
+		<div class="question" id="q11">
+            <span class="flag" onclick="toggleFlag('q11')">🚩</span>
+            <h2>Question 11:</h2>
+            <p>And finally, calculating \( \tau_{xy} \) we find: \(\tau_{xy} = -\frac{\partial^2 \phi}{\partial x \partial y} = -\frac{w x}{4} \left\{ \frac{3y^c}{h^3} - \frac{3}{h} \right\}\)</p>
+			<p>with the value of the exponent \( c \) being:</p>
+            <div class="options">
+                <label><input type="radio" name="q11" value="wrong"> a.1</label>
+                <label><input type="radio" name="q11" value="wrong"> b.9</label>
+                <label><input type="radio" name="q11" value="correct"> c.2</label>
+                <label><input type="radio" name="q11" value="wrong"> d.11</label>
+            </div>
+            <button onclick="checkAnswer('q11')">Submit</button>
+            <p class="result" id="result-q11"></p>
+        </div>
+		
+		<div class="question" id="q12">
+            <span class="flag" onclick="toggleFlag('q12')">🚩</span>
+            <h2>Question 12:</h2>
+            <p>Now the stress function must be calibrated to satisfy the boundary conditions 1-8 above. All boundary conditions are satisfied for all values of \( A \), except one. This boundary condition is:</p>
+            <div class="options">
+                <label><input type="radio" name="q12" value="wrong"> a.1</label>
+                <label><input type="radio" name="q12" value="wrong"> b.2</label>
+                <label><input type="radio" name="q12" value="correct"> c.8</label>
+                <label><input type="radio" name="q12" value="wrong"> d.4</label>
+            </div>
+            <button onclick="checkAnswer('q12')">Submit</button>
+            <p class="result" id="result-q12"></p>
+        </div>
+		
+		<div class="question" id="q13">
+            <span class="flag" onclick="toggleFlag('q13')">🚩</span>
+            <h2>Question 13:</h2>
+            <p>Using the relationship above, we find the value of \( A \) as: \(A = \frac{w}{dh} - \frac{w L^2}{8h^3}\)</p>
+			<p>with the value of the denominator parameter \( d \) being:</p>
+            <div class="options">
+                <label><input type="radio" name="q13" value="correct"> a.20</label>
+                <label><input type="radio" name="q13" value="wrong"> b.18</label>
+                <label><input type="radio" name="q13" value="wrong"> c.26</label>
+                <label><input type="radio" name="q13" value="wrong"> d.14</label>
+            </div>
+            <button onclick="checkAnswer('q13')">Submit</button>
+            <p class="result" id="result-q13"></p>
+        </div>
+		
+    </div>
+    <script src="scripts/quiz.js"></script>
+</body>
+</html>
