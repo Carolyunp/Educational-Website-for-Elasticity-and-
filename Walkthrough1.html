@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/navbar.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">    
+    <link rel="stylesheet" href="styles/theory.css">
+    <script src="https://kit.fontawesome.com/f1091eb4c6.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+    <script>document.addEventListener("DOMContentLoaded", ()=> {renderMathInElement(document.body)});</script>
+    <script src="scripts/navbar.js"></script>
+    <title>Theory</title>
+    <style>
+        .container {
+            text-align: center;
+        }
+        img {
+            display: inline-block;
+        }
+        h1 {
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>Walk Through Questions</h1>
+
+        <p>The Walk Through Question provides a structured, step-by-step approach to solving complex problems about Elasticity, enhancing understanding and problem-solving skills through interactive learning.</p>
+
+        <h2>Jump to Key Chapter:</h2>
+		<div class="container">
+                <ul>
+                <li><a href="#chapter1">Problem in Polar Coordinates</a></li>
+                <li><a href="#chapter2">Stress Concentration Around Hole in A Plate</a></li>
+                <li><a href="#chapter3">Stress Function Analysis of a Cantilever Beam</a></li>
+				<li><a href="#chapter4">Plane Stress vs Plane Strain - Limitations </a></li>
+                <li><a href="#chapter5">Plane Stress vs Plane Strain - Key Takeaways</a></li>
+                <li><a href="#quiz">Test your knowledge with multiple choice flashcards</a></li>
+                </ul>
+			</div>
+
+        <section id="chapter1">
+    
+    <h1>Problem in Polar Coordinates</h1>
+
+    <h2>Problem Statement</h2>
+    <p>
+        A semicircular tunnel supporting vertical loads can be simplified, due to symmetry, to the beam setup of Figure 1.
+        It is subjected to a load of magnitude \( P \) on surface \( CD \).
+        For the solution of the stress, strain, and displacement fields of this beam, consider the general form of a stress function:
+    </p>
+    <p>
+        \[
+        \phi(r,\theta) = \left( S r^3 + \frac{N}{r} + O r + Q r \log r \right) \sin \theta
+        \]
+    </p>
+    <p>where \( S, N, O, Q \) are constants.</p>
+
+    <div class="container">
+            <img src="styles/images/walkthroughq1.png" alt="question" >
+		</div>
+	<div class="container">	
+	        <figcaption><strong>Figure 1: Beam of Question 1</strong></figcaption>
+        </div>
+        
+
+    <hr>
+
+    <h3>Questions</h3>
+    <ol>
+        <li>
+            Specify all boundary conditions on all four surfaces, connecting them with the appropriate stress field components.
+            <span style="float: right;">[8 marks]</span>
+        </li>
+        <li>
+            Write complete relationships for the stress field (i.e. \( \sigma_r(r, \theta) \), \( \sigma_{\theta}(r, \theta) \), \( \tau_{r\theta}(r, \theta) \)) 
+            in terms of the position \( (r, \theta) \), parameters \( S, N, O, Q \), and radii \( a, b \).
+            <span style="float: right;">[3 marks]</span>
+        </li>
+        <li>
+            Form a system of equations that can be used to express the unknown parameters \( S, N, O, Q \) in terms of the known quantities \( P, a, b \) 
+            (but do not solve this system).
+            <span style="float: right;">[4 marks]</span>
+        </li>
+    </ol>
+
+    <hr>
+
+    <h2>Solution Process</h2>
+
+    <h3>1. Boundary Conditions</h3>
+    <p>The boundary conditions on all four surfaces are as follows:</p>
+    <ul>
+        <li><strong>Surface AD:</strong> \( \sigma_r(a, \theta) = \tau_{r\theta}(a, \theta) = 0 \)</li>
+        <li><strong>Surface BC:</strong> \( \sigma_r(b, \theta) = \tau_{r\theta}(b, \theta) = 0 \)</li>
+        <li><strong>Surface CD:</strong> 
+            \[
+            \int_{a}^{b} \tau_{r\theta}(r,0) \, dr = P
+            \]
+            \[
+            F_\theta = \int_{a}^{b} \sigma_{\theta}(r,0) \, dr = 0
+            \]
+            \[
+            M = \int_{a}^{b} \sigma_{\theta}(r,0) r \, dr = 0
+            \]
+        </li>
+        <li><strong>Surface AB:</strong> Using equilibrium of forces and moments:
+            \[
+            \int_{a}^{b} \sigma_{\theta}(r, \frac{\pi}{2}) \, dr = -P
+            \]
+            \[
+            M = \int_{a}^{b} \sigma_{\theta}(r, \frac{\pi}{2}) r \, dr = P \frac{a+b}{2}
+            \]
+            \[
+            \int_{a}^{b} \tau_{r\theta}(r, \frac{\pi}{2}) \, dr = 0
+            \]
+        </li>
+    </ul>
+
+    <hr>
+
+    <h3>2. Stress Field Expressions</h3>
+    <p>The stress components derived from the stress function are:</p>
+    <p>
+        \[
+        \sigma_r = - \frac{1}{r} \frac{\partial \phi}{\partial r} + \frac{1}{r^2} \frac{\partial^2 \phi}{\partial \theta^2} =
+        \left( 2Ar - \frac{2B}{r^3} + \frac{D}{r} \right) \sin\theta
+        \]
+    </p>
+    <p>
+        \[
+        \sigma_{\theta} = \frac{\partial^2 \phi}{\partial r^2} =
+        \left( 6Ar + \frac{2B}{r^3} + D \right) \sin\theta
+        \]
+    </p>
+    <p>
+        \[
+        \tau_{r\theta} = - \frac{\partial}{\partial r} \left( \frac{1}{r} \frac{\partial \phi}{\partial \theta} \right) =
+        -\left( 2Ar - \frac{2B}{r^3} + D \right) \cos\theta
+        \]
+    </p>
+
+    <hr>
+
+    <h3>3. System of Equations for \( S, N, O, Q \)</h3>
+    <p>From the boundary conditions, we obtain the following system of equations:</p>
+    <p>
+        \[
+        2Aa - \frac{2B}{a^3} + \frac{D}{a} = 0
+        \]
+    </p>
+    <p>
+        \[
+        2Ab - \frac{2B}{b^3} + \frac{D}{b} = 0
+        \]
+    </p>
+	<p>
+        \[
+        A (b^2 - a^2) + B \left( \frac{1}{b^2} - \frac{1}{a^2} \right) + D \log \left(\frac{b}{a} \right) = -P
+        \quad 
+        \]
+    </p>
+    <p>
+        \[
+        3A (b^2 - a^2) + B \left( \frac{1}{b^2} - \frac{1}{a^2} \right) + D \log \left(\frac{b}{a} \right) = -P
+        \quad 
+        \]
+    </p>
+    <p>
+        \[
+        2A (b^3 - a^3) - 2B \left( \frac{1}{b} - \frac{1}{a} \right) + D (b - a) = P \frac{a + b}{2}
+        \quad 
+        \]
+    </p>
+</section>
+	
+       <section id="chapter2">
+    
+    <h1>Stress Analysis Around a Circular Hole in a Plate</h1>
+
+    <h2>Problem Statement</h2>
+    <p>
+        A section of an aircraft wing skin can be analyzed by the configuration of Figure 6. The plate 
+        is subjected to uniform tensile stress of magnitude \( S \) in the \( x \) and \( y \) directions, and at the 
+        origin, it contains a hole with radius \( a \). Calculate the stress state around the hole, commenting 
+        on the magnitude of these stresses at the boundary of the hole.
+    </p>
+
+    <div class="container">
+            <img src="styles/images/walkthroughq2.png" alt="question" >
+		</div>
+    <div class="container">    
+        <figcaption><strong>Figure 6: Stress Analysis of an Aircraft Wing Skin</strong></figcaption>
+    </div>
+
+    <hr>
+
+    <h3>Questions</h3>
+    <ol>
+        <li>
+            Derive the stress field equations around the hole based on the given stress function.
+            <span style="float: right;">[8 marks]</span>
+        </li>
+        <li>
+            Determine the boundary conditions and calculate the stress values at the hole's boundary.
+            <span style="float: right;">[3 marks]</span>
+        </li>
+        <li>
+            Identify the locations where the maximum and minimum stresses occur and provide their values.
+            <span style="float: right;">[4 marks]</span>
+        </li>
+    </ol>
+
+    <hr>
+
+    <h2>Solution Process</h2>
+
+    <h3>1. Stress Function and Governing Equations</h3>
+    <p>
+        The solution of the biharmonic equation in cylindrical polar coordinates is obtained using separation of variables:
+    </p>
+    <p>
+        \[
+        \phi = R(r) \Theta(\theta)
+        \]
+    </p>
+    <p>
+        One possible solution is:
+        \[
+        \phi = \left( A r^2 + B r^4 + \frac{C}{r^2} + D \right) \cos 2\theta
+        \]
+    </p>
+    <p>
+        The general solution for the stress function in a plate with a circular hole subjected to a uniform tensile stress \( S \) is:
+        \[
+        \phi = \frac{S}{2} (2r^2 - a^2 \ln r) - \frac{S}{4} \left( r^2 + \frac{a^4}{r^2} - 2a^2 \right) \cos 2\theta
+        \]
+    </p>
+
+    <hr>
+
+    <h3>2. Stress Field Expressions</h3>
+    <p>The stress components derived from the stress function are:</p>
+    <p>
+        \[
+        \sigma_r = \frac{S}{2} \left( 1 - \frac{a^2}{r^2} \right) + \frac{S}{2} \left( 1 + \frac{3a^4}{r^4} - \frac{4a^2}{r^2} \right) \cos 2\theta
+        \]
+    </p>
+    <p>
+        \[
+        \sigma_{\theta} = \frac{S}{2} \left( 1 + \frac{a^2}{r^2} \right) - \frac{S}{2} \left( 1 + \frac{3a^4}{r^4} \right) \cos 2\theta
+        \]
+    </p>
+    <p>
+        \[
+        \tau_{r\theta} = -\frac{S}{2} \left( 1 - \frac{3a^4}{r^4} + \frac{2a^2}{r^2} \right) \sin 2\theta
+        \]
+    </p>
+
+    <hr>
+
+    <h3>3. Boundary Conditions and Stress at the Hole</h3>
+    <p>At the boundary of the hole \( r = a \), the stress components simplify to:</p>
+    <p>
+        \[
+        \sigma_r = 0, \quad \sigma_{\theta} = S - 2S \cos 2\theta, \quad \tau_{r\theta} = 0
+        \]
+    </p>
+
+    <hr>
+
+    <h3>4. Maximum and Minimum Stresses</h3>
+    <p>The circumferential stress reaches its maximum at \( \theta = \frac{\pi}{2}, \frac{3\pi}{2} \):</p>
+    <p>
+        \[
+        \sigma_{\theta, \max} = 3S
+        \]
+    </p>
+    <p>The minimum circumferential stress occurs at \( \theta = 0, \pi \):</p>
+    <p>
+        \[
+        \sigma_{\theta, \min} = -S
+        \]
+    </p>
+
+    <hr>
+
+    <h3>5. Alternative Expression for Stresses</h3>
+    <p>Another equivalent formulation for stress components is:</p>
+    <p>
+        \[
+        \sigma_r = S \left( 1 - \frac{a^2}{r^2} \right)
+        \]
+    </p>
+    <p>
+        \[
+        \sigma_{\theta} = S \left( 1 + \frac{a^2}{r^2} \right)
+        \]
+    </p>
+    <p>
+        \[
+        \tau_{r\theta} = 0
+        \]
+    </p>
+    <p>At the edge of the hole \( r = a \), we obtain:</p>
+    <p>
+        \[
+        \sigma_r = \tau_{r\theta} = 0, \quad \sigma_{\theta} = 2S
+        \]
+    </p>
+    <p>Thus, the transverse tensile stress reduces the stress concentration at the hole.</p>
+
+</section>
+
+<section id="chapter3">
+    
+    <h1>Stress Function Analysis of a Cantilever Beam</h1>
+
+    <h2>Problem Statement</h2>
+    <p>
+        A cantilever beam of length \( L \) and depth \( 2h \) is in a state of plane strain. 
+        The cantilever is rigidly supported at \( x = L \) and is loaded as shown in Figure 1.
+        Examine the following stress function in relation to this problem:
+    </p>
+    <p>
+        \[
+        \phi = \frac{p}{20h^3} \left( 15h^2 x^2 y - 5x^2 y^3 - 2h^2 y^3 + y^5 \right),
+        \]
+    </p>
+    <p>
+        and show that the stresses acting on the boundary are as required, except for a distributed 
+        direct stress on the end of the beam which exerts no resultant force or moment.
+    </p>
+
+    <div class="container">
+            <img src="styles/images/walkthroughq3.png" alt="question" >
+		</div>
+    <div class="container">    
+        <figcaption><strong>Figure 3: A Canteliver is rigidly supported at x=L with an applied load</strong></figcaption>
+    </div>
+
+    <hr>
+
+    <h3>Questions</h3>
+    <ol>
+        <li>
+            Derive the stress components from the given stress function.
+            <span style="float: right;">[8 marks]</span>
+        </li>
+        <li>
+            Show that the boundary conditions are satisfied for the given loading conditions.
+            <span style="float: right;">[3 marks]</span>
+        </li>
+        <li>
+            Confirm the stress distribution and its agreement with beam theory.
+            <span style="float: right;">[4 marks]</span>
+        </li>
+    </ol>
+
+    <hr>
+
+    <h2>Solution Process</h2>
+
+    <h3>1. Stress Components</h3>
+	<p>Given the functional form for the stress function provided in the question:</P>
+	<p>
+    \[
+    \phi = \frac{P}{20h^3} \left( 15h^2 x^2 y - 5x^2 y^3 - 2h^2 y^3 + y^5 \right)
+    \]
+    </p>
+    <p>The stress components can be derived from the given stress function:</p>
+    <p>
+        \[
+        \sigma_x = \frac{\partial^2 \phi}{\partial y^2} = \frac{P}{20h^3} \left( -30x^2 y - 12h^2 y + 20y^3 \right)
+        \]
+    </p>
+    <p>
+        \[
+        \sigma_y = \frac{\partial^2 \phi}{\partial x^2} = \frac{P}{20h^3} \left( 30h^2 y - 10y^3 \right)
+        \]
+    </p>
+    <p>
+        \[
+        \tau_{xy} = -\frac{\partial^2 \phi}{\partial x \partial y} = \frac{P}{20h^3} \left( -30h^2 x + 30xy^2 \right)
+        \]
+    </p>
+
+    <hr>
+
+    <h3>2. Verification of Boundary Conditions</h3>
+    <p>At \( y = h \), we have:</p>
+    <p>
+        \[
+        \sigma_y = P, \quad \tau_{xy} = 0
+        \]
+    </p>
+    <p>At \( y = -h \), we have:</p>
+    <p>
+        \[
+        \sigma_y = -P, \quad \tau_{xy} = 0
+        \]
+    </p>
+    <p>which satisfy the expected loading conditions.</p>
+
+    <p>At \( x = 0 \), a distributed direct stress exists:</p>
+    <p>
+        \[
+        \sigma_x |_{x=0} = \frac{P}{20h^3} \left( -12h^2 y + 20y^3 \right)
+        \]
+    </p>
+
+    <h3>3. Resultant Force and Moment</h3>
+    <p>The resultant force is obtained by integrating over the depth:</p>
+    <p>
+        \[
+        \int_{-h}^{h} \sigma_x \, dy = \frac{P}{20h^3} \left[ -6h y^2 + 5y^4 \right]_{-h}^{h} = 0
+        \]
+    </p>
+    <p>The moment is given by:</p>
+    <p>
+        \[
+        \int_{-h}^{h} \sigma_x y \, dy = \frac{P}{20h^3} \left[ -4h^2 y + 4y^5 \right]_{-h}^{h} = 0
+        \]
+    </p>
+
+    <h3>4. Agreement with Beam Theory</h3>
+    <p>For large \( x \) values, where \( x \gg h \), we observe:</p>
+    <p>
+        \[
+        \sigma_x \to -\frac{3P x^2 y}{2h^3}
+        \]
+    </p>
+    <p>which is verified by beam theory using:</p>
+    <p>
+        \[
+        M = -\frac{2P x^2}{2}, \quad I = \frac{(2h)^3}{12}
+        \]
+    </p>
+    <p>so that:</p>
+    <p>
+        \[
+        \sigma_x = \frac{M y}{I} = -\frac{3P x^2 y}{2h^3}
+        \]
+    </p>
+    <p>which confirms that the derived stress function is consistent with classical beam bending theory.</p>
+
+</section>
+
+
+
+
+</div>
+
+</body>
+</html>
