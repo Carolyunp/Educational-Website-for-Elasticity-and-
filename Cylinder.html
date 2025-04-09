@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/navbar.css">
+    <script src="scripts/navbar.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/f1091eb4c6.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles/Cylinder.css">
+    <script>document.addEventListener("DOMContentLoaded", ()=> {renderMathInElement(document.body)});</script>
+    <title>Hollow Cylinder Subjected to Internal and External Pressures</title>
+</head>
+<body>
+    <h1 class="title">Hollow Cylinder Subjected to Internal and External Pressures:</h1>
+    <!-- First, the Canvas with the Hollow Cylinder -->
+    <div class="canvas">
+        <canvas id="stressCanvas" width="600" height="600" style="border: 1px solid #000;"></canvas>
+    </div>
+	
+	<!-- Then the Input Variables for Radius and Pressures -->
+    <div class="inputContainer">
+        <label for="radius">Select Radius (r):</label>
+        <input type="range" id="radius" min="5.1" max="10.2" value="6" step="0.01">
+        <span id="radiusValue">6</span>
+        <br>
+
+        <label for="pressureA">Inner Pressure (\( \sigma_a \)):</label>
+        <input type="range" id="pressureA" min="-10.0" max="10.0" value="-5" step="0.01">
+        <span id="pressureAValue">10</span>
+        <br>
+
+        <label for="pressureB">Outer Pressure (\( \sigma_b \)):</label>
+        <input type="range" id="pressureB" min="0.0" max="100.0" value="5" step="0.01">
+        <span id="pressureBValue">100</span>
+    </div>
+	
+	<!-- Finally, the Calculated Stress Components Below -->
+    <div class="stressResults">
+        <h3>Calculated Stress Components:</h3>
+        <p>Radial Stress (\( \sigma_r \)): <span id="sigmaR">0</span></p>
+        <p>Circumferential Stress (\(\sigma_\theta\)): <span id="sigmaTheta">0</span></p>
+    </div>
+	
+	<h3>No changes with θ so all derivatives wrt θ vanish</h3>
+	<p>Biharmonic relationship becomes ODE with constant coefficients:</p>
+	<p>
+            \[
+            \phi = A \ln r + Br^2 \ln r + Cr^2 +D
+            \]
+        </p>
+
+
+     <div class="equations">
+        <p>
+            We consider the case when \( B = D = 0 \) so that
+        </p>
+		<h2>Stress Function and Equations:</h2>
+        <p>
+            \[
+            \phi = A \ln r + Cr^2
+            \]
+        </p>
+        <p>
+            and consequently:
+        </p>
+        <p>
+            \[
+            \sigma_r = \frac{1}{r} \frac{\partial \phi}{\partial r} + \frac{1}{r^2} \frac{\partial^2 \phi}{\partial \theta^2} = \frac{1}{r} \frac{\partial \phi}{\partial r} = \frac{A}{r^2} + 2C
+            \]
+        </p>
+        <p>
+            \[
+            \sigma_\theta = \frac{d^2 \phi}{dr^2} = - \frac{A}{r^2} + 2C
+            \]
+        </p>
+        <p>
+            \[
+            \tau_{r\theta} = - \frac{\partial}{\partial r} \left( \frac{\partial \phi}{\partial \theta} \right) = 0
+            \]
+        </p>
+        <p>
+            This could represent a hollow cylinder subjected to internal and external stresses, \( \sigma_a \) and \( \sigma_b \), respectively. The boundary conditions for such a problem are:
+        </p>
+        <ul>
+            <li>\( \sigma_r = \sigma_a \) on \( r = a \);</li>
+            <li>\( \sigma_r = \sigma_b \) on \( r = b \).</li>
+        </ul>
+        <p>
+            Using these <strong>boundary conditions</strong> the coefficients \( A \) and \( C \) may be determined from:
+        </p>
+        <p>
+            \[
+            A \frac{a^2 b^2}{b^2 - a^2} + 2C = \sigma_a, \quad A \frac{b^2}{b^2 - a^2} + 2C = \sigma_b
+            \]
+        </p>
+        <p>
+            which together yield:
+        </p>
+        <p>
+            \[
+            A = \frac{a^2 b^2 (\sigma_b - \sigma_a)}{b^2 - a^2}, \quad 2C =  \frac{-\sigma_a a^2 + \sigma_b b^2}{b^2 - a^2}
+            \]
+        </p>
+        <p>
+            Substituting these values into the previous equations gives the <strong>expressions for the stress components:</strong>
+        </p>
+        <p>
+            \[
+            \sigma_r = \frac{a^2 b^2 (\sigma_a - \sigma_b)}{b^2 - a^2} \frac{1}{r^2} + \frac{-\sigma_a a^2 + \sigma_b b^2}{b^2 - a^2}
+            \]
+        </p>
+        <p>
+            \[
+            \sigma_\theta = - \frac{a^2 b^2 (\sigma_a - \sigma_b)}{b^2 - a^2} \frac{1}{r^2} + \frac{-\sigma_a a^2 + \sigma_b b^2}{b^2 - a^2}
+            \]
+        </p>
+    </div>
+
+
+
+    
+
+
+
+
+    <script src="scripts/Cylinderwithbackground1.js"></script>
+
+</body>
+</html>
