@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cantilever Beam Analysis</title>
+    <link rel="stylesheet" href="styles/navbar.css">
+    <link rel="stylesheet" href="styles/page.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script defer src="https://kit.fontawesome.com/f1091eb4c6.js" crossorigin="anonymous"></script>
+    <script src="scripts/navbar.js"></script>
+    <!-- MathJax for LaTeX rendering -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <div class="main-content">
+    <h1>Cantilever Beam Analysis</h1>
+    
+    <section>
+        <h2>1. Basic Situation of Cantilever Beam</h2>
+    <p>The boundary conditions of the cantilever beam are given as follows:</p>
+    <div class="formula">
+        <strong>Left end (fixed end):</strong>
+        \[ u = 0 \quad v = 0 \quad \frac{\partial v}{\partial x} - \beta \frac{\partial u}{\partial y} = 0 \]
+    </div>
+    <div class="formula">
+        <strong>Right end (free end):</strong>
+        \[ N = 0 \quad Q = -F_0 \quad M = -M_0 \]
+    </div>
+
+    <h3>Beam Parameters</h3>
+    <div class="formula">
+	    <strong>Poisson's ratio:</strong>
+        \[ \nu = 0.3 \]
+		<strong>Elastic modulus:</strong>
+        \[ E = 210 \times 10^9 \, \text{Pa} \]
+		<strong>Moment of inertia:</strong>
+        \[ I = 1 \times 10^{-6} \, \text{m}^4 \]
+		<strong>Distributed load:</strong>
+        \[ q = 1000 \, \text{N/m} \]
+		<strong>Beam length:</strong>
+        \[ l = 2 \, \text{m} \]
+		<strong>Beam height:</strong>
+        \[ h = 0.1 \, \text{m} \]
+    </div>
+        
+        <h2>2. Parameter β Determination</h2>
+        <div class="formula">
+            \[ \beta = \frac{8 + 9\nu}{2 + \nu} \]
+            <p>where \(\nu\) is Poisson's ratio.</p>
+        </div>
+    </section>
+    
+    <section>
+        <h2>Case Selection</h2>
+        <div class="case-selector">
+            <button class="case-btn" onclick="selectCase('M0_F0_T0')">M0, F0, T0</button>
+            <button class="case-btn" onclick="selectCase('F0_T0')">M0=0, F0, T0</button>
+            <button class="case-btn" onclick="selectCase('T0')">M0=0, F0=0, T0</button>
+            <button class="case-btn" onclick="selectCase('M0_T0')">F0=0, M0, T0</button>
+            <button class="case-btn" onclick="selectCase('M0')">F0=0, M0, T0=0</button>
+            <button class="case-btn" onclick="selectCase('M0_F0')">T0=0, M0, F0</button>
+            <button class="case-btn" onclick="selectCase('F0')">T0=0, M0=0, F0</button>
+            <button class="case-btn" onclick="selectCase('all_zero')">F0=0, M0=0, T0=0</button>
+        </div>
+        
+        <div id="controls" class="controls" style="display: none;">
+            <div class="control-group" id="m0Control">
+                <label for="m0Slider">M0 (Bending Moment): <span id="m0Value">100</span> N·m</label>
+                <input type="range" id="m0Slider" min="0" max="200" value="100" step="1">
+            </div>
+            <div class="control-group" id="f0Control">
+                <label for="f0Slider">F0 (Shear Force): <span id="f0Value">50</span> N</label>
+                <input type="range" id="f0Slider" min="0" max="100" value="50" step="1">
+            </div>
+            <div class="control-group" id="t0Control">
+                <label for="t0Slider">T0 (Axial Force): <span id="t0Value">30</span> N</label>
+                <input type="range" id="t0Slider" min="0" max="60" value="30" step="1">
+            </div>
+        </div>
+        
+        <img id="beamImage" class="beam-image" src="" alt="Beam diagram" style="display: none;">
+    </section>
+    
+    <section id="resultsSection">
+        <h2>Analysis Results</h2>
+        <div id="caseTitle" class="formula"></div>
+		<div id="A4Formula" class="formula"></div>
+        <div id="A4Value" class="formula"></div>
+		
+        <div id="A5Formula" class="formula"></div>
+        <div id="A5Value" class="formula"></div>
+        
+        <h3>Parameter β</h3>
+        <div id="betaFormula" class="formula"></div>
+        <p>Current value: <span id="betaValue" class="result-value"></span></p>
+        
+        <h3>Stress Components</h3>
+        <div id="stressFormula" class="formula"></div>
+        <div id="stressResults" class="results"></div>
+        
+        <h3>Displacement</h3>
+        <div id="displacementFormula" class="formula"></div>
+        <div id="displacementResults" class="results"></div>
+    </section>
+
+    <script src="scripts/Cantileverbeam_fixed.js"></script>
+    </div>
+</body>
+</html>
