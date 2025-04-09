@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/navbar.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">    
+    <link rel="stylesheet" href="styles/theory.css">
+    <script src="https://kit.fontawesome.com/f1091eb4c6.js" crossorigin="anonymous"></script>
+    <script src="scripts/navbar.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+    <script>document.addEventListener("DOMContentLoaded", ()=> {renderMathInElement(document.body)});</script>
+    <title>Key Concepts</title>
+    <style>
+        h2 {
+            font-size: 1.8em;
+        }
+        ol {
+            font-size: 1.1em;
+        }
+        li {
+            margin-bottom: 20px;
+        }
+        p {
+            margin-top: 30px;
+            font-size: 1.2em;
+            text-align: center;
+        }
+    </style>
+</head>
+<Body>
+    <h1>Stress Function Analysis of a Cantilever Beam</h1>
+
+    <h2>Problem Statement</h2>
+    <p>
+        A cantilever beam of length \( L \) and depth \( 2h \) is in a state of plane strain. 
+        The cantilever is rigidly supported at \( x = L \) and is loaded as shown in Figure 1.
+        Examine the following stress function in relation to this problem:
+    </p>
+    <p>
+        \[
+        \phi = \frac{p}{20h^3} \left( 15h^2 x^2 y - 5x^2 y^3 - 2h^2 y^3 + y^5 \right),
+        \]
+    </p>
+    <p>
+        and show that the stresses acting on the boundary are as required, except for a distributed 
+        direct stress on the end of the beam which exerts no resultant force or moment.
+    </p>
+
+    <div class="container">
+            <img src="styles/images/walkthroughq3.png" alt="question" >
+		</div>
+    <div class="container">    
+        <figcaption><strong>Figure 3: A Canteliver is rigidly supported at x=L with an applied load</strong></figcaption>
+    </div>
+
+    <hr>
+
+    <h3>Questions</h3>
+    <ol>
+        <li>
+            Derive the stress components from the given stress function.
+            <span style="float: right;">[8 marks]</span>
+        </li>
+        <li>
+            Show that the boundary conditions are satisfied for the given loading conditions.
+            <span style="float: right;">[3 marks]</span>
+        </li>
+        <li>
+            Confirm the stress distribution and its agreement with beam theory.
+            <span style="float: right;">[4 marks]</span>
+        </li>
+    </ol>
+
+    <hr>
+
+    <h2>Solution Process</h2>
+
+    <h3>1. Stress Components</h3>
+	<p>Given the functional form for the stress function provided in the question:</P>
+	<p>
+    \[
+    \phi = \frac{P}{20h^3} \left( 15h^2 x^2 y - 5x^2 y^3 - 2h^2 y^3 + y^5 \right)
+    \]
+    </p>
+    <p>The stress components can be derived from the given stress function:</p>
+    <p>
+        \[
+        \sigma_x = \frac{\partial^2 \phi}{\partial y^2} = \frac{P}{20h^3} \left( -30x^2 y - 12h^2 y + 20y^3 \right)
+        \]
+    </p>
+    <p>
+        \[
+        \sigma_y = \frac{\partial^2 \phi}{\partial x^2} = \frac{P}{20h^3} \left( 30h^2 y - 10y^3 \right)
+        \]
+    </p>
+    <p>
+        \[
+        \tau_{xy} = -\frac{\partial^2 \phi}{\partial x \partial y} = \frac{P}{20h^3} \left( -30h^2 x + 30xy^2 \right)
+        \]
+    </p>
+
+    <hr>
+
+    <h3>2. Verification of Boundary Conditions</h3>
+    <p>At \( y = h \), we have:</p>
+    <p>
+        \[
+        \sigma_y = P, \quad \tau_{xy} = 0
+        \]
+    </p>
+    <p>At \( y = -h \), we have:</p>
+    <p>
+        \[
+        \sigma_y = -P, \quad \tau_{xy} = 0
+        \]
+    </p>
+    <p>which satisfy the expected loading conditions.</p>
+
+    <p>At \( x = 0 \), a distributed direct stress exists:</p>
+    <p>
+        \[
+        \sigma_x |_{x=0} = \frac{P}{20h^3} \left( -12h^2 y + 20y^3 \right)
+        \]
+    </p>
+
+    <h3>3. Resultant Force and Moment</h3>
+    <p>The resultant force is obtained by integrating over the depth:</p>
+    <p>
+        \[
+        \int_{-h}^{h} \sigma_x \, dy = \frac{P}{20h^3} \left[ -6h y^2 + 5y^4 \right]_{-h}^{h} = 0
+        \]
+    </p>
+    <p>The moment is given by:</p>
+    <p>
+        \[
+        \int_{-h}^{h} \sigma_x y \, dy = \frac{P}{20h^3} \left[ -4h^2 y + 4y^5 \right]_{-h}^{h} = 0
+        \]
+    </p>
+
+    <h3>4. Agreement with Beam Theory</h3>
+    <p>For large \( x \) values, where \( x \gg h \), we observe:</p>
+    <p>
+        \[
+        \sigma_x \to -\frac{3P x^2 y}{2h^3}
+        \]
+    </p>
+    <p>which is verified by beam theory using:</p>
+    <p>
+        \[
+        M = -\frac{2P x^2}{2}, \quad I = \frac{(2h)^3}{12}
+        \]
+    </p>
+    <p>so that:</p>
+    <p>
+        \[
+        \sigma_x = \frac{M y}{I} = -\frac{3P x^2 y}{2h^3}
+        \]
+    </p>
+    <p>which confirms that the derived stress function is consistent with classical beam bending theory.</p>
+	
+
+    <h2>Problem Statement</h2>
+    <p>
+        The cantilever shown in Figure 2 is of narrow rectangular section of unit width and is subjected 
+        to a couple \( M \) at the end \( x = 0 \). Suggest a suitable stress function and determine 
+        the displacements \( u \) and \( v \) in the \( x \)-\( y \) plane.
+    </p>
+
+    <div class="container">
+        <img src="styles/images/walkthroughq3.1.png"alt="Figure 2: Cantilever Subjected to a Couple M">
+    </div>
+    <div class="container">    
+        <figcaption><strong>Figure 2: A Cantilever Subjected to a Couple \( M \)</strong></figcaption>
+    </div>
+
+    <hr>
+
+    <h3>Questions</h3>
+    <ol>
+        <li>
+            Define the boundary conditions and derive a suitable stress function for the given cantilever beam.
+            <span style="float: right;">[8 marks]</span>
+        </li>
+        <li>
+            Determine the stress components and verify their consistency with the boundary conditions.
+            <span style="float: right;">[3 marks]</span>
+        </li>
+        <li>
+            Compute the displacements \( u \) and \( v \) in the \( x \)-\( y \) plane.
+            <span style="float: right;">[4 marks]</span>
+        </li>
+    </ol>
+
+    <hr>
+
+    <h2>Solution Process</h2>
+
+    <h3>1. Boundary Conditions and Stress Function</h3>
+    <p>To satisfy the loading and boundary conditions:</p>
+    <p>
+        - There must be no shear component or loading on the longitudinal boundaries \( y = \pm c \).
+    </p>
+    <p>
+        - The bending moment at the end \( x = 0 \) must be nonzero, but the net force components must be zero.
+    </p>
+
+    <p>From equilibrium conditions:</p>
+    <p>
+        \[
+        \int_{-c}^{c} y \sigma_x \, dy = M
+        \]
+    </p>
+    <p>
+        \[
+        \int_{-c}^{c} \sigma_x |_{x=0} \, dy = 0, \quad \int_{-c}^{c} \tau_{xy} |_{x=0} \, dy = 0
+        \]
+    </p>
+
+    <p>We assume the stress function:</p>
+    <p>
+        \[
+        \phi = \frac{F}{6} y^3
+        \]
+    </p>
+
+    <hr>
+
+    <h3>2. Stress Components</h3>
+    <p>The stress components are derived from the stress function:</p>
+    <p>
+        \[
+        \sigma_x = \frac{\partial^2 \phi}{\partial y^2} = Fy
+        \]
+    </p>
+    <p>
+        \[
+        \sigma_y = \frac{\partial^2 \phi}{\partial x^2} = 0, \quad \tau_{xy} = -\frac{\partial^2 \phi}{\partial x \partial y} = 0
+        \]
+    </p>
+
+    <p>Since \( \sigma_y = 0 \) and \( \tau_{xy} = 0 \), the boundary conditions on \( y = \pm c \) are automatically satisfied.</p>
+
+    <p>To satisfy the moment equilibrium:</p>
+    <p>
+        \[
+        \int_{-c}^{c} y \sigma_x \, dy = -M
+        \]
+    </p>
+    <p>which gives:</p>
+    <p>
+        \[
+        F = -\frac{3M}{2c^3}
+        \]
+    </p>
+
+    <p>Thus, the stress function becomes:</p>
+    <p>
+        \[
+        \phi = -\frac{3M}{6} \frac{y^3}{2c^3}
+        \]
+    </p>
+    <p>and the final stress components are:</p>
+    <p>
+        \[
+        \sigma_x = -\frac{3M}{2c^3} y, \quad \sigma_y = \tau_{xy} = 0.
+        \]
+    </p>
+
+    <hr>
+
+    <h3>3. Displacement Calculations</h3>
+    <p>Using Hooke's law:</p>
+    <p>
+        \[
+        \epsilon_x = \frac{\partial u}{\partial x} = \frac{\sigma_x}{E} = -\frac{3M}{2c^3 E} y
+        \]
+    </p>
+    <p>
+        \[
+        \epsilon_y = \frac{\partial v}{\partial y} = -\frac{\nu}{E} \sigma_x = \frac{\nu 3M}{2c^3 E} y
+        \]
+    </p>
+
+    <p>Integrating gives:</p>
+    <p>
+        \[
+        u = -\frac{3M}{2c^3 E} yx + f(y), \quad v = \frac{\nu 3M}{4E c^3} y^2 + g(x)
+        \]
+    </p>
+
+    <hr>
+
+    <h3>4. Solving for Unknown Functions</h3>
+    <p>The shear strain condition gives:</p>
+    <p>
+        \[
+        0 = -\frac{3M}{2c^3 E} x + \frac{df}{dy} + \frac{dg}{dx}
+        \]
+    </p>
+
+    <p>Since terms involving \( x \) and \( y \) must be equal separately:</p>
+    <p>
+        \[
+        \frac{df}{dy} = r, \quad \frac{dg}{dx} -\frac{3M}{2c^3 E} x = s
+        \]
+    </p>
+    <p>where \( r \) and \( s \) are constants, and we require \( r = -s \).</p>
+
+    <p>Integrating:</p>
+    <p>
+        \[
+        f = -sy + f_0, \quad g = \frac{3M}{2c^3 E} \frac{x^2}{2} + sx + g_0
+        \]
+    </p>
+
+    <p>Thus, the displacement equations become:</p>
+    <p>
+        \[
+        u = -\frac{3M}{2c^3 E} yx - sy + f_0
+        \]
+    </p>
+    <p>
+        \[
+        v = \frac{\nu 3M}{4c^3 E} y^2 + \frac{3M}{2c^3 E} \frac{x^2}{2} + sx + g_0
+        \]
+    </p>
+
+    <h3>5. Applying Boundary Conditions</h3>
+    <p>At \( x = L, y = 0 \), we require:</p>
+    <p>
+        \[
+        u = v = \frac{\partial v}{\partial x} = 0.
+        \]
+    </p>
+
+    <p>Solving for constants:</p>
+    <p>
+        \[
+        f_0 = 0, \quad s = -\frac{3M L}{2c^3 E}, \quad g_0 = \frac{3M L^2}{4c^3 E}
+        \]
+    </p>
+
+    <p>Thus, the final displacement equations are:</p>
+    <p>
+        \[
+        u = -\frac{3M}{2c^3 E} yx + \frac{3M L}{2c^3 E} y
+        \]
+    </p>
+    <p>
+        \[
+        v = \frac{\nu 3M}{4c^3 E} y^2 + \frac{3M}{2c^3 E} \frac{x^2}{2} - \frac{3M L}{2c^3 E} x + \frac{3M L^2}{4c^3 E}
+        \]
+    </p>
+
+
+</Body>
+</html>
