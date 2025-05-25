@@ -60,7 +60,7 @@ const cases = {
         showT0: true
     },
     M0: {
-        image: "styles/images/M0.png",
+        image: "styles/images/M_0.png",
         title: "Case: \(F_0 = 0\), \(M_0\), \(T_0 = 0\)",
         beta: "\\[ \\beta = \\frac{8 + 9\\nu}{2 + \\nu} \\]",
         A4_formula: "\\[ A_4 = -\\frac{qh^2}{120I} - \\frac{M_0}{6I} \\]",
