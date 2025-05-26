@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/navbar.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">    
+    <link rel="stylesheet" href="styles/theory.css">
+    <script src="https://kit.fontawesome.com/f1091eb4c6.js" crossorigin="anonymous"></script>
+    <script src="scripts/navbar.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+    <script>document.addEventListener("DOMContentLoaded", ()=> {renderMathInElement(document.body)});</script>
+    <title>Key Concepts</title>
+    <style>
+        h2 {
+            font-size: 1.8em;
+        }
+        ol {
+            font-size: 1.1em;
+        }
+        li {
+            margin-bottom: 20px;
+        }
+        p {
+            margin-top: 30px;
+            font-size: 1.2em;
+            text-align: center;
+        }
+    </style>
+</head>
+<Body>
+<section id="chapter5">
+
+    <h1>Elasticity Analysis of a Cantilever Beam Under Varying Pressure</h1>
+
+    <h2>Problem Statement</h2>
+    <p>
+        A cantilever beam of length \( L \), depth \( 2h \), and thickness \( t \) is in a state of plane stress.
+        On its upper surface, it is subjected to a pressure that varies linearly from a value \( q_0 \) (per unit area) at the fixed end, to zero at the free end, as shown in Figure 1.
+        It is also given that \( h \) is very small relative to \( L \).
+    </p>
+
+    <div class="container">
+         <img src="styles/images/Figure1.png" alt="question" >
+    </div>
+    <div class="container">    
+        <figcaption><strong>Figure 1: Cantilever Beam under Linearly Varying Pressure</strong></figcaption>
+    </div>
+
+    <hr>
+
+    <h3>Questions</h3>
+    <ol>
+        <li>
+            When applying the Theory of Elasticity, state the five material assumptions. Identify any violated assumptions if the beam is made of steel-reinforced concrete.
+            <span style="float: right;">[3 marks]</span>
+        </li>
+        <li>
+            List eight conditions that an Airy stress function \( \phi(x, y) \) and boundary conditions must satisfy for this loading case.
+            <span style="float: right;">[8 marks]</span>
+        </li>
+        <li>
+            Show that the function 
+            \[
+            \phi(x, y) = A(3hxy + 10x^3) + B(3xy^5 - 5x^3 y^3 - 6h^2 xy^3 + 15h^2 x^3 y)
+            \]
+            satisfies the eight conditions. Express \( A \) and \( B \) in terms of \( q_0, L, h \).
+            <span style="float: right;">[7 marks]</span>
+        </li>
+        <li>
+            Describe how to calculate the strain and displacement fields based on the stress function.
+            <span style="float: right;">[2 marks]</span>
+        </li>
+    </ol>
+
+    <hr>
+
+    <h2>Solution Process</h2>
+
+    <h3>1. Material Assumptions</h3>
+    <p>The five assumptions in linear elasticity are:</p>
+    <ul>
+        <li>Continuity</li>
+        <li>Homogeneity</li>
+        <li>Isotropy</li>
+        <li>Elasticity</li>
+        <li>Linearity</li>
+    </ul>
+    <p>For steel-reinforced concrete, the violated assumptions are:</p>
+    <ul>
+        <li><strong>Homogeneity:</strong> Different materials (steel, concrete) → non-uniform properties</li>
+        <li><strong>Isotropy:</strong> Reinforcement introduces directional properties</li>
+        <li><strong>Continuity:</strong> Concrete may contain pores or voids</li>
+    </ul>
+
+    <hr>
+
+    <h3>2. Boundary Conditions and Governing Equations</h3>
+    <p>The Airy stress function must satisfy the following:</p>
+    <ol>
+        <li>\( \sigma_x(0, y) = 0 \)</li>
+        <li>\( \tau_{xy}(x, +h) = 0 \)</li>
+        <li>\( \tau_{xy}(x, -h) = 0 \)</li>
+        <li>\( \sigma_y(x, +h) = -q_0 \frac{x}{L} \)</li>
+        <li>\( \sigma_y(x, -h) = 0 \)</li>
+        <li>\( \int_{-h}^{+h} \sigma_x(0, y) t \, dy = 0 \)</li>
+        <li>\( \int_{-h}^{+h} \tau_{xy}(0, y) t y \, dy = 0 \)</li>
+        <li>Biharmonic equation: \( \nabla^4 \phi = 0 \)</li>
+    </ol>
+
+    <hr>
+
+    <h3>3. Verifying the Stress Function</h3>
+    <p>Given:</p>
+    <p>
+        \[
+        \phi(x, y) = A(3hxy + 10x^3) + B(3xy^5 - 5x^3 y^3 - 6h^2 xy^3 + 15h^2 x^3 y)
+        \]
+    </p>
+
+    <p>The stress components are:</p>
+    <p>
+        \[
+        \sigma_x = \frac{\partial^2 \phi}{\partial y^2} = B(60xy^3 - 30x^3 y - 36h^2 xy)
+        \]
+        \[
+        \sigma_y = \frac{\partial^2 \phi}{\partial x^2} = 60Ax + B(-30x y^3 + 90h^2 xy)
+        \]
+        \[
+        \tau_{xy} = -\frac{\partial^2 \phi}{\partial x \partial y} = -3Ah - B(15y^4 - 45x^2 y^2 - 18h^2 y^2 + 45h^2 x^2)
+        \]
+    </p>
+
+    <p>From boundary condition substitution and simplification:</p>
+    <ul>
+        <li>For boundary conditions 1–5 to be satisfied, we must have \( A = B h^3 \)</li>
+        <li>Matching loading at the top surface gives:
+            \[
+            B = -\frac{q_0}{120 L h^3}, \quad A = -\frac{q_0}{120 L}
+            \]
+        </li>
+    </ul>
+
+    <p>Also, the biharmonic equation:
+        \[
+        \nabla^4 \phi = \frac{\partial^4 \phi}{\partial x^4} + 2 \frac{\partial^4 \phi}{\partial x^2 \partial y^2} + \frac{\partial^4 \phi}{\partial y^4} = 0
+        \]
+        is satisfied.
+    </p>
+
+    <hr>
+
+    <h3>4. Strain and Displacement Field (Procedure)</h3>
+    <p>To determine strain and displacement fields:</p>
+    <ul>
+        <li>Use Hooke’s law:
+            \[
+            \epsilon_x = \frac{\sigma_x}{E}, \quad \epsilon_y = \frac{\sigma_y}{E}, \quad \gamma_{xy} = \frac{\tau_{xy}}{G}
+            \]
+        </li>
+        <li>Relate to displacements:
+            \[
+            \epsilon_x = \frac{\partial u}{\partial x}, \quad \epsilon_y = \frac{\partial v}{\partial y}, \quad \gamma_{xy} = \frac{\partial u}{\partial y} + \frac{\partial v}{\partial x}
+            \]
+        </li>
+        <li>Integrate to obtain \( u(x, y) \) and \( v(x, y) \), applying appropriate boundary conditions.</li>
+    </ul>
+
+</section>
